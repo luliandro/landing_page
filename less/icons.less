@@ -1,0 +1,116 @@
+/* ==============================
+ 	icons
+   ============================== */
+.close-this { //closes modals and nav overlay (repositioned in nav overlay)
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    .icn-cross {
+        width: 2.5rem;
+        height: 2.5rem;
+
+        path {
+            fill: @bg-lightest;
+        }
+    }
+}
+
+svg {
+	width: 24px;
+	height: 24px;
+	transition: all @animTime ease;
+	cursor: pointer;
+
+	&:focus, *:focus {
+		outline: none;
+	}
+
+	&:not([data-icon="symbol"]) {
+
+		.large & {
+			width: 29px;
+			height: 29px;
+		}
+	}
+
+	* {
+		transition: all @animTime ease;
+	}
+
+	path {
+		fill: @text-med;
+	}	
+
+	circle {
+		stroke: @text-med;
+		fill: none;
+	}
+
+	line, ellipse {
+		stroke: @text-med;
+	}
+
+	polyline.symbol-empty {
+		fill: none;
+		stroke: @bg-lightest;
+	}
+
+	polyline.symbol-solid {
+		fill: @bg-lightest;
+		stroke: @bg-lightest;
+	}
+
+	&.icn-glasses {
+
+		path {
+			stroke: @text-med;
+			fill: none;
+		}
+	}
+
+	&.icn-checkbox {
+
+		path {
+			fill: transparent;
+			stroke: @text-med;
+		}
+	}
+
+	&#hevnly-symbol {
+		width: 26px;
+		height: 26px;
+
+		path {
+			fill: @text-med;
+		}
+	}
+
+	&.negative {
+
+		path {
+			fill: @bg-med !important;
+		}
+
+		circle {
+			stroke: @bg-med;
+			fill: none;
+		}
+
+		line, ellipse {
+			stroke: @bg-med;
+		}
+	}
+
+	/* crisp edges for webkit browsers */
+	@media only screen and (-webkit-min-device-pixel-ratio: 0.75) {
+		
+		&.icn-plus, &.icn-navicon {
+			shape-rendering: crispEdges;
+
+			.active &, .rotate & {
+				shape-rendering: auto;
+			}
+		}
+	} 
+}

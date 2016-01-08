@@ -1,0 +1,578 @@
+/* CARD HOLDER */
+
+.features, .posts {
+    padding: 3rem 0 3rem 0;
+    margin: 0px;
+
+    &.dark {
+        background: @text-dark;
+
+        &.poly {
+            background: url('@{imgPath}/hevnly-lopoly.svg') no-repeat 53% -10% @bg-darker;
+            background-size: 250%;
+        }
+    }
+
+    .heading {
+        position: relative;
+        text-align: center;
+        &:extend(.margined);
+        text-align: center; 
+
+        @media @medium {
+            text-align: left;
+        }
+
+        h1 {   
+            color: @bg-med;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .see-more {
+            .link(@bg-med);
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding-left: 1rem;            
+
+            @media @medium {
+                margin-bottom: 0;
+                position: absolute;
+                bottom: 0.4rem;
+                right: 0.6rem;
+            }
+
+            .no-touch &:hover {
+                svg path {
+                    fill: darken(@bg-med, 10%);
+                }
+            }
+
+            svg path {
+                fill: @bg-med;
+            }
+        }
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        &:extend(.margined);
+        -ms-flex-pack: center;
+
+        @media @medium {
+            justify-content: space-between;
+            -ms-flex-pack: justify;
+        }
+
+        .no-flexbox & {
+            display: block;
+            .clearfix;
+        }
+    }
+}
+
+
+/* CARD STRUCTURE */
+
+.feature-card, .overlay-feature-card {
+    position: relative;
+    text-align: center;
+    margin-left: 60/1180*100%;
+
+    .row &:nth-of-type(2), .row &:nth-of-type(3) { //temporary! hide in wp template
+        display: none;
+    }
+
+    .row &:first-of-type {
+        margin-left: 0;
+    }
+
+    .row & {
+        width: 220px;
+        -ms-flex: 0 1 220px;
+
+        @media @medium {
+            &:nth-of-type(2) { //temporary! hide in wp template
+                display: block;
+            }
+        }
+
+        @media @large {
+            &:nth-of-type(3) { //temporary! hide in wp template
+                display: block;
+            }
+        }  
+    }
+
+    .no-flexbox .row & {
+        float: left;
+        width: 310/640*100%;
+        margin-right: 20/640*100%;
+        margin-left: 0;
+
+        .image {
+            max-width: 310px;
+        }
+
+        @media @medium {
+            width: 200/640*100%;
+
+            .image {
+                max-width: 220px;
+            }
+        }
+
+        @media @large {
+            width: 220/1180*100%;
+            margin-right: 100/1180*100%;
+        }
+    }
+
+    &.last-card {
+
+        .no-flexbox .row & {
+            margin-right: 0; 
+        }
+        
+        .image {
+            .overlay-wrap(.75);
+
+            .floating {
+                position: absolute;
+                margin: 0;
+                top: 45%;
+                left: 0;
+                right: 0;
+                color: @bg-lightest;
+
+                .arrow {
+                    padding-left: 0.8em;
+
+                    svg path {
+                        fill: @bg-lightest;
+                    }
+                }
+            }
+
+            .no-touch &:hover:before {
+                background: rgba(0, 0, 0, 0.5);
+            }
+
+            .no-touch &:hover svg, &:focus svg {
+                right: 0.25rem;
+            }
+        }
+    }
+        
+    .image {
+        width: 100%;
+        max-height: 220px;
+        max-width: 220px;
+        padding-bottom: 100%;
+        display: block;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top center;
+        margin: 0px auto;
+        overflow: hidden;
+        position: relative;
+
+        span.alt {
+            position: absolute; 
+            left: 0px;
+            right: 0px;
+        }
+    }
+}
+
+.citizen-card {
+    text-align: center;
+    position: relative;
+    background-color: @bg-lightest;
+    margin-right: 20/620*100%;
+    width: 100%;
+
+    .row & {
+        -ms-flex: 1;
+
+        &:nth-of-type(1) { //temporary! hide in wp template
+            margin-right: 0;
+        }
+
+        &:nth-of-type(2), &:nth-of-type(3) { //temporary! hide in wp template
+            display: none;
+        }
+
+        &:last-of-type {
+            margin-right: 0px;
+        }
+
+        @media @medium {
+            width: 300/620*100%;
+
+            &:nth-of-type(1) { //temporary! hide in wp template
+                margin-right: 20/620*100%;
+            }
+            
+            &:nth-of-type(2) { //temporary! hide in wp template
+                display: block;
+                margin-right: 0;
+            }
+        }
+
+        @media @large {
+            width: 380/1180*100%;
+
+            &:nth-of-type(1), &:nth-of-type(2) { //temporary! hide in wp template
+                margin-right: 20/1180*100%;
+            }
+
+            &:nth-of-type(3) { //temporary! hide in wp template
+                display: block;
+                margin-right: 0;
+            }
+        }
+    }
+
+    .no-flexbox .row & {
+        float: left;
+    }
+    
+    .image {
+        position: relative;
+
+        img {
+            border-radius: 0;
+        }
+    }
+
+    .meta {
+        margin-bottom: 2rem;
+    }
+}
+
+/* LIKE THIS */
+
+.hevnly-icon {
+    position: absolute;
+    width: 51px;
+    height: 51px;
+    background: rgba(0,0,0,0.2);
+    bottom: 2.25rem;
+    left: 50%;
+    margin: 0 0 0 -25px;
+    padding: 0;
+    border-radius: 50%;
+    border: 0;
+    font-size: 1rem;
+    z-index: 0;
+    .transition(all);
+
+    .no-touch &:hover {
+        background: rgba(0,0,0,0.4);
+        cursor: pointer;
+    }
+
+    svg {
+        width: 25px;
+        height: 25px;
+        margin-top: 7px;
+    }
+}
+
+/* LIKE COUNT */
+
+.like-count {
+    padding: 0 0 0 1.5rem;
+    position: relative;
+    color: @text-med;
+    font-size: 0.875rem;
+    margin: 1rem 0;
+    display: inline-block;
+
+    .icn-hevnly-heart {
+        position: absolute;
+        top: -0.1rem;
+        left: 0rem;
+        width: 18px;
+        height: 18px;
+        cursor: default;
+
+        path {
+            fill: @text-med;  
+        }
+    }
+}
+
+/* META */
+
+.meta {
+    font-size: 0.75rem;
+
+    &.white {
+        color: @bg-lightest;
+    }
+
+    &.grey {
+        color: @bg-med;
+    }
+
+    &.citizen {
+        li.location {
+            margin-bottom: 3px;
+        }
+        li.date {
+
+        }
+    }
+
+    &.feature {
+        padding-left: 26px;
+        min-height: 16px;
+        padding-top: 2px;
+        margin: 0.5rem 0;
+        display: inline-block;
+
+        li {
+            display: inline-block;
+
+            &.read {
+                display: none; // hide these modules as we can't hook this up on the landing page for current release
+                margin-left: 24px;
+                position: relative;
+
+                &:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    left: -15px;
+                    top: 4px;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 2px;
+                    background-color: white;
+                }
+            }
+        }
+
+        &.white {
+            background:url('@{imgPath}/icon-time-white.svg') no-repeat;
+
+            li.read {
+                &:before {
+                    background-color: @bg-lightest;
+                }
+            }
+        }
+
+        &.grey {
+            background:url('@{imgPath}/icon-time-grey.svg') no-repeat;
+
+            li.read {
+                &:before {
+                    background-color: @bg-med;
+                }
+            }
+        }
+    }
+}
+
+/* TAGS */
+
+.tags {
+    text-align: center;
+    margin: 0px auto;
+    padding: 0px 10px;
+    width: 100%;
+
+    .tag {
+        .btn('normal-smaller');
+        display: inline-block;
+        margin: 0px 6px 6px 0px;
+        font-weight: normal;
+
+        &:after {
+            display: none;
+        }
+
+        &:last-of-type {
+            margin-right: 0px;
+        }
+    }
+
+    .feature-card &, .overlay-feature-card & {
+
+        @media @medium {
+            text-align: left;
+            padding: 0;
+        }
+        
+        .tag {
+            padding: 0;
+            background: 0;
+            border: 0;
+            .link(@text-lighter);
+            margin: 0;
+            display: inline;
+            font-size: 0.875rem;
+
+            .no-touch &:hover {
+                background: 0;
+            }
+
+            &:after {
+                content: ', ';
+                display: inline;
+            }
+
+            &:last-of-type {
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .citizen-card & {
+        background: @bg-light-med;
+        width: 100%;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+
+        @media @medium {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .tag {
+            padding: 0;
+            background: 0;
+            border: 0;
+            .link(@text-lighter);
+            margin: 0;
+            display: inline;
+            line-height: 1rem;
+
+            .no-touch &:hover {
+                background: 0;
+            }
+
+            &:after {
+                content: ', ';
+                display: inline;
+            }
+
+            &:last-of-type {
+                &:after {
+                    display: none;
+                }
+            }
+        }
+
+        .top-posts & {
+            @media @large {
+                background: none;
+                position: static;
+
+                .tag {
+                    .btn('normal-smaller');
+                    display: inline-block;
+                    margin: 0px 6px 6px 0px;
+
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+        }       
+    }
+
+    .post-footer & {
+        max-width: @post-content-width;
+    } 
+}
+
+
+/* INFO */
+
+.info {
+    .feature-card &, .overlay-feature-card & {
+        margin: 2em 0;
+    }
+
+    .citizen-card & {
+        padding: 0;
+
+        @media @medium {
+            padding: 3rem 1rem 5rem 1rem;
+        }
+    }
+    
+    .title {
+        font-size: 2rem;
+        line-height: 0.9em;
+        margin: 0.8rem 0;
+
+        a {
+            .link-lighten(@text-dark);
+
+            .dark & {
+                .link(@bg-lightest);
+            }
+        }
+    }
+
+    .excerpt {
+        font-size: 0.875rem;
+        margin: 0.5rem 0;
+
+        .dark & {
+            color: @bg-lightest;
+        }
+    }
+
+    .preview {
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+
+    }
+
+    .more {
+        margin-top: 1.5rem;
+        display: block;
+
+        .btn-more {
+            .btn('cta');
+            display: inline-block;
+        }
+    }
+
+    .name {
+        font-size: 1.5rem;
+        display: block;
+        line-height: 1em;
+        margin-top: 2rem;
+
+        @media @medium {
+            margin-top: 0;
+        }
+    }
+
+    a.name {
+        .link-lighten(@bg-dark);
+    }
+
+    .instagram {
+        font-size: 0.875rem;
+    }
+
+    .meta {
+        margin-top: 0.5rem;
+
+        @media @medium {
+            margin-bottom: 0;
+        }
+    }
+}

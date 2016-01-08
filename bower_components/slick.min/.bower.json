@@ -1,0 +1,12 @@
+{
+  "name": "slick.min",
+  "_cacheHeaders": {
+    "Last-Modified": "Fri, 31 Jul 2015 13:48:54 GMT",
+    "Content-Type": "application/javascript"
+  },
+  "main": "index.js",
+  "_source": "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.js",
+  "_target": "*",
+  "_originalSource": "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.js",
+  "_direct": true
+}

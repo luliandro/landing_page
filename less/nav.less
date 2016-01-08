@@ -1,0 +1,361 @@
+// lighten up navicon colour so it's visible over bg image
+.icn-navicon line {
+	stroke: #a6a8aa;
+}
+
+// only show navicon when logged in user has app access
+.navicon {
+	display: none;
+
+	&.logged-in-appuser {
+		display: block;
+	}
+}
+
+.off-canvas-overlay {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	background: rgba(0, 0, 0, 0);
+	transition: background @animTime ease;
+	z-index: 1500;
+	
+	&.show {
+		background: rgba(0, 0, 0, 0.75);
+		bottom: 0;
+	}
+}
+
+.off-canvas {
+	position: fixed;
+	top: 0;
+	width: 17.65rem;
+	height: 100%;
+	background: @bg-dark;
+	color: @bg-med;
+	overflow: visible;
+	z-index: 1500;
+	transition: left @physicsBezier, right @physicsBezier;
+	-webkit-overflow-scrolling: touch;
+
+	&.left {
+		left: -17.65rem;
+		box-shadow: -18px 0px 0px @bg-dark; // cover up for physics animation
+
+		&.show {
+			display: block;
+			left: 0;
+		}
+	}
+
+	&.right {
+		display: none; // hide for touch devices, always.
+		right: -17.65rem;
+		box-shadow: 18px 0px 0px @bg-dark; // cover up for physics animation
+
+		@media @large {
+			display: block !important; // only show for mouse devices
+		}
+
+		&.show {
+			display: block;
+			right: 0;
+		}
+	}
+
+	button.off-canvas-close {
+		visibility: hidden;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 4rem;
+		height: 4rem;
+		padding: 1.1rem;
+		background: @accent-error;
+		border: 1px darken(@accent-error, 5%) solid;
+		border-radius: 0;
+		z-index: @layer4;
+
+		&:hover {
+			background: @accent-error;
+			border: 1px darken(@accent-error, 5%) solid;
+		}
+
+		@media @large {
+			width: 5.5rem;
+			height: 5.5rem;
+			padding: 1.75rem;
+		}
+
+		// show the button only when nav is shown
+		.show& {
+			visibility: visible;
+
+			.left& {
+				right: -4rem;
+
+				@media @large {
+					right: -5.5rem;
+				}
+			}
+
+			.right& {
+				left: -4rem;
+
+				@media @large {
+					left: -5.5rem;
+				}
+			}
+
+			svg.icn-cross {
+				transform: rotate(0deg);
+			}
+		}
+
+		svg {
+			pointer-events: none;
+		}
+
+		svg.icn-cross {
+			transform: rotate(-25deg);
+			transition-delay: .1s;
+		}
+
+		path {
+			fill: @bg-lightest;
+		}
+	}
+
+	input {
+		width: 100%;
+	}
+
+	.more {
+		display: none; // temporary hide until notification page works
+		height: @nav-item-height;
+		transition: background @animTime ease;
+
+		a {
+			display: table;
+			margin: 1rem auto;
+			padding: .5rem 2.5rem .5rem 1.75rem;
+			font-size: .86rem;
+			color: @bg-lightest;
+			text-align: center;
+			background: @accent-link;
+			border-radius: @border-radius;
+
+			&:hover, &:focus {
+				background: darken(@accent-link, 10%);
+
+				&:after {
+					margin-left: 1.5rem;
+				}
+			}
+
+			&:after {
+				content: url('@{iconPath}/arrow-right-small.svg');
+				position: absolute;
+				width: 8px;
+				margin-left: .75rem;
+				transition: margin @animTime ease;
+			}
+		}
+	}
+
+	.scroll-area {
+		overflow-x: hidden;
+		overflow-y: auto;
+		height: 100%;
+		padding: .75rem .75rem 15rem .75rem;
+	}
+
+	.legal-app-navigation {
+		display: flex;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		padding: 0 .75rem .75rem .75rem;
+
+		@media @large {
+			padding: 0 1.5rem .75rem 1.5rem;
+		}
+
+		.legal-app-links {
+			flex-grow: 1;
+			color: @bg-med;
+			transition: color @animTime ease;
+
+			&:focus, &:hover {
+				color: @bg-light;
+			}
+		}
+	}
+}
+
+[role="navigation"] {
+	width: 100%;
+	padding: 0 0 0 0;
+	font-size: 1.33rem;
+
+	&.hide {
+		display: none;
+	}
+
+	> a, > div {
+		display: block;
+		position: relative;
+		height: @nav-item-height;
+		width: 100%;
+		padding-left: 3rem;
+		-webkit-font-smoothing: antialiased;
+
+		&:hover, &:focus {
+
+			svg {
+				path {
+					fill: @bg-med;
+				}
+
+				circle {
+					stroke: @bg-med;
+					fill: none;
+				}
+
+				line, ellipse {
+					stroke: @bg-med;
+				}
+
+				&.icn-glasses {
+
+					path {
+						stroke: @bg-med;
+						fill: none;
+					}
+
+					circle {
+						stroke: @bg-med;
+					}
+				}
+			}
+
+			img {
+				opacity: 1;
+			}
+		}
+
+		svg {
+			position: absolute;
+			top: .75rem;
+			left: 0;
+			width: 33px;
+			height: 33px;
+
+			@media @large {
+				top: 1rem;
+			}
+
+			&.icn-cart {
+				width: 36px;
+				height: 36px;
+				top: .6rem;
+
+				@media @large {
+					left: -.2rem;
+				}
+			}
+		}
+
+		img {
+			position: absolute;
+			left: .33rem;
+			top: .875rem;
+			opacity: .75;
+			transition: opacity @animTime ease;
+		}
+
+		> p {
+			height: @nav-item-height;
+			margin: 0;
+			line-height: @nav-item-height;
+			color: @bg-med;
+
+			span {
+				display: none; // temporarily hide price as it doesn't show `£0.00` yet.
+				float: right;
+				color: @text-light;
+				font-size: .75rem;
+				line-height: 5;
+
+				&:before {
+					content: '£';
+				}
+			}
+		}
+	}
+
+	.notification-in-nav {
+		cursor: pointer;
+		transition: all @animTime ease;
+		overflow: visible;
+
+		&:before, &:after, *, *:before, *:after {
+			transition: all @animTime ease;
+		}
+
+		> p:after {
+			content: url('@{iconPath}/arrow-down-neg.svg');
+			position: absolute;
+			right: -.4rem;
+			top: .55rem;
+			width: 26px;
+			height: 36px;
+			transform: scale(.4);
+		}
+
+		// add to show notifications
+		&.show {
+			height: 21rem;
+			padding-left: 0;
+		  	cursor: default;
+
+			// remove icon and notification indicator
+			> svg, &:before {
+				opacity: 0;
+			}
+
+			> p {
+			  	cursor: pointer;
+				font-weight: @fontweight-med;
+				color: @bg-lightest;
+
+				&:after {
+					transform: scale(.4) rotate(-180deg);
+				}
+			}
+
+			.notifications.preview {
+				display: block;
+			}
+		}
+	}
+
+	// only hide side navigation after search on small/medium screens
+	.search-enabled & {
+		display: none;
+
+		@media @large {
+			display: block;
+		}
+	}
+
+	// hide some elements for mouse devices
+	.discover-link, .profile-link {
+
+		@media @large {
+			display: none;
+		}
+	}
+}

@@ -1,0 +1,12 @@
+{
+  "name": "modernizr.min",
+  "_cacheHeaders": {
+    "Last-Modified": "Wed, 24 Sep 2014 14:15:15 GMT",
+    "Content-Type": "application/javascript"
+  },
+  "main": "index.js",
+  "_source": "https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js",
+  "_target": "*",
+  "_originalSource": "https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js",
+  "_direct": true
+}

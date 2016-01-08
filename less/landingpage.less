@@ -1,0 +1,1128 @@
+.intro-panel {
+    position: relative;
+    min-height: 465px !important; // use !important because JS sets height inline.
+    height: 100%;
+    background: url('@{imgPath}/hevnly-landing-bg-wide.png') no-repeat 0 0;
+    background-size: cover;
+    overflow: hidden;
+
+    @media @large {
+        min-height: 666px !important;
+    }
+
+    * {
+        color: @bg-lightest;
+    }
+}
+
+.intro-panel-container {
+    position: relative;
+    max-width: 53rem;
+    height: 100%;
+    margin: 0 auto;
+    padding: 1rem 1rem;
+    transform: translateY(0);
+    opacity: 1;
+    transition: all .66s ease;
+
+    &.hide {
+        transform: translateY(.5rem);
+        opacity: .25;
+    }
+
+    @media @medium {
+        padding: 2rem 2rem;
+    }
+
+    @media @large {
+        margin: 0 auto;
+        padding: 2rem 3rem;
+    }
+
+    .page-cta-container {
+        display: flex;
+        margin-top: 2rem;
+        width: 100%;
+        justify-content: space-around;
+        max-width: 24rem;
+        margin: 0 auto;
+
+        @media @medium {
+            margin-left: 0;
+            justify-content: flex-start;
+        }
+    }
+
+    h1 {
+        margin-bottom: 0;
+        font-size: 2.33rem;
+        text-align: center;
+        font-weight: 100;
+
+        @media @medium {
+            margin-top: 4rem;
+            font-size: 3.5rem;
+            text-align: left;
+            line-height: 1;
+        }
+
+        @media @large {
+            margin-top: 3.5rem;
+            font-size: 4.25rem;
+        }
+    }
+
+    p {
+        width: 100%;
+        font-weight: 500;
+        text-align: center;
+        
+        @media @medium {
+            width: 66.66%;
+            margin-top: .66rem;
+            font-size: 1.25rem;
+            text-align: left;
+        }
+
+        @media @large {
+            margin-bottom: 3rem;
+        }
+    }
+
+    .cta-secondary {
+        display: block;
+        width: 9rem;
+        border: 1px @bg-lightest solid;
+        transition: opacity @animTime ease;
+
+        @media @medium {
+            display: inline-block;
+            width: 10rem;
+            margin-left: .875rem;
+            font-size: .875rem;
+        }
+
+        @media @large {
+            font-size: .875rem;
+        }
+    }
+
+    // TODO: move all this button code out to mixins.less
+    .cta-invite {
+        position: relative;
+        width: 100%;
+        max-width: 9rem;
+        height: 3rem;
+        background: @bg-lightest;
+        border-radius: @border-radius;
+        font-size: .75rem;
+        transition: max-width @animTime ease;
+
+        @media @medium {
+            font-size: 1rem;
+            max-width: 10rem;
+        }
+
+        &.active {
+            max-width: 20rem;
+            margin-bottom: 3rem;
+            background: @bg-light;
+
+            &:after {
+                content: '';
+                background: @bg-light;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                width: 4.5rem;
+            }
+
+            .cta-invite-label {
+                right: .5rem;
+                transform: translateX(0%);
+                font-size: .66rem;
+                font-weight: 400;
+                z-index: @layer5;
+
+                &:hover {
+                    color: @text-dark;
+                }
+            }
+
+            .cta-invite-mailicon {
+                width: 3rem;
+            }
+
+            [class^="cta-invite-control-"] {
+                top: 3.5rem;
+                visibility: visible;
+                transform: rotateX(0);
+                opacity: 1;
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.3);
+                }
+            }
+
+            .cta-invite-control-tryagain {
+                opacity: 0;
+            }
+
+            .cta-invite-input {
+                left: 3rem;
+                width: ~'calc(100% - 7rem)';
+                color: @text-med;
+                cursor: text;
+
+                // can't chain the selectors, unfortunately, or browsers will ignore them.
+                &::-webkit-input-placeholder {
+                    color: lighten(@bg-med, 10%);
+                }
+
+                &:-moz-placeholder {
+                    color: lighten(@bg-med, 10%);
+                }
+
+                &::-moz-placeholder {
+                    color: lighten(@bg-med, 10%);
+                }
+
+                &:-ms-placeholder {
+                    color: lighten(@bg-med, 10%);
+                }
+            }
+
+            + button.cta-secondary {
+                display: none;
+            }
+        }
+
+        &.sending {
+            cursor: pointer;
+
+            .icn-mail {
+                display: none;
+            }
+
+            .spinner {
+                display: block;
+                cursor: not-allowed;
+            }
+
+            [class^="cta-invite-control-"] {
+                opacity: .5;
+                transition-delay: 0s;
+                cursor: not-allowed;
+            }
+
+            .cta-invite-control-tryagain {
+                opacity: 0;
+            }
+
+            .cta-invite-control-submit, .cta-invite-submit:hover {
+                background: rgba(255, 255, 255, .3);
+            }
+
+            .cta-invite-control-close, .cta-invite-control-close:hover {
+                background: transparent;
+            }
+
+            .cta-invite-label {
+                opacity: .5;
+                cursor: not-allowed;
+            }
+
+            .cta-invite-mailicon {
+                cursor: not-allowed;
+            }
+
+            .cta-invite-input {
+                opacity: .2;
+                cursor: not-allowed;
+            }
+        }
+
+        &.error {
+            .spaceboots; // the shake animation
+            background: @accent-error;
+
+            .cta-invite-input, .cta-invite-input:hover, .cta-invite-input:focus {
+                background: @accent-error;
+                color: @bg-light;
+            }
+
+            .cta-invite-label {
+                color: @bg-light;
+                z-index: @layer2;
+                display: none;
+            }
+
+            .cta-invite-mailicon {
+                background: darken(@accent-error, 5%);
+                cursor: not-allowed;
+
+                &:hover {
+                    background: darken(@accent-error, 5%);
+                }
+
+                &:before {
+                    visibility: visible;
+                    opacity: 1;
+                    transform: translate(-50%, -50%) rotate(0deg);
+                }
+
+                .icn-mail {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(0);
+                }
+
+                .spinner {
+                    display: none;
+                }
+            }
+
+            .cta-invite-error-message {
+                display: block;
+            }
+
+            [class^="cta-invite-control-"] {
+                transition: opacity @animTime ease, top @animTime ease, transform .6s ease, background @animTime ease, left @animTime ease;    
+            }
+
+            .cta-invite-control-submit {
+                left: 4.5rem;
+                opacity: 0;
+            }
+
+            .cta-invite-control-close {
+                left: 9rem;
+                opacity: 0;
+            }
+
+            .cta-invite-control-tryagain {
+                left: 0;
+                opacity: 1;
+            }
+        }
+
+        &.send-success {
+            margin-bottom: 0;
+            
+            .cta-invite-mailicon {
+                background: @accent-link;
+
+                .icn-mail {
+                    display: none;
+                }
+
+                .icn-tick {
+                    display: block;
+                }
+            }
+
+            .cta-invite-success-message {
+                display: block;
+            }
+
+            [class^="cta-invite-control-"] {
+                display: none;
+            }
+
+            + button.cta-secondary {
+                opacity: 1;
+            }
+        }
+
+        * {
+            cursor: pointer;
+        }
+        
+        .cta-invite-label {
+            position: absolute;
+            right: 50%;
+            top: 0;
+            bottom: 0;
+            margin: 0;
+            transform: translateX(50%);
+            font-size: .75rem;
+            line-height: 3rem;
+            color: @text-med;
+            transition: font-size @animTime ease, transform @animTime ease, right @animTime ease, color @animTime ease;
+
+            @media @medium {
+                font-size: .875rem;
+            }
+        }
+
+        .cta-invite-submit-text {
+            margin: 0;
+        }
+
+        .cta-invite-mailicon {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            padding: 0;
+            background: @bg-lightest;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border: none;
+            overflow: hidden;
+            transition: width @animTime ease, background @animTime ease;
+
+            &:hover {
+                background: @bg-lightest;
+            }
+
+            &:before {
+                content: '!';
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 1.5rem;
+                height: 1.5rem;
+                border-radius: 50%;
+                border: 2px @bg-light solid;
+                opacity: 0;
+                font-size: 1rem;
+                line-height: 1.25rem;
+                visibility: hidden;
+                pointer-events: none;
+            }
+
+            .icn-mail, .icn-tick {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(1);
+                transition: transform @animTime ease;
+
+                path {
+                    fill: @bg-med;
+                }
+            }
+
+            .icn-tick {
+                display: none;
+                pointer-events: none;
+
+                path {
+                    fill: @bg-lightest;
+                }
+            }
+
+            .spinner {
+                width: 1.5rem;
+                height: 1.5rem;
+                margin-top: -.75rem;
+                margin-left: -.75rem;
+            }
+        }
+
+        .cta-invite-error-message, .cta-invite-success-message {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 3rem;
+            right: 0;
+            width: ~'calc(100% - 3rem)';
+            height: 3rem;
+            padding-left: .5rem;
+            background: @accent-error;
+            line-height: 3rem;
+            z-index: @layer2;
+            cursor: text;
+        }
+
+        .cta-invite-error-message {
+            cursor: pointer;
+
+            .icn-cross {
+                position: absolute;
+                right: .5rem;
+                top: 50%;
+                width: 16px;
+                height: 16px;
+                transform: translateY(-50%);
+
+                path {
+                    fill: @bg-lightest;
+                }
+            }
+        }
+
+        .cta-invite-success-message {
+            background: @bg-lightest;
+            color: @text-med;
+        }
+
+        .cta-invite-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            border: none;
+            background: @bg-light;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            color: transparent;
+            transition: left @animTime ease;
+            cursor: pointer;
+
+            &:hover {
+                border: none;
+                background: @bg-light;
+            }
+            
+            // can't chain the selectors, unfortunately, or browsers will ignore them.
+            &::-webkit-input-placeholder {
+                color: transparent;
+            }
+
+            &:-moz-placeholder {
+                color: transparent;
+            }
+
+            &::-moz-placeholder {
+                color: transparent;
+            }
+
+            &:-ms-placeholder {
+                color: transparent;
+            }
+        }
+        
+        [class^="cta-invite-control-"] {
+            position: absolute;
+            top: 1rem;
+            padding: .25rem .5rem;
+            visibility: hidden;
+            opacity: 0;
+            border: none;
+            background: transparent;
+            transform: scale(.5);
+            color: @bg-lightest;
+            font-size: 1rem;
+            transform: rotateX(180deg);
+            transform-origin: 0 0;
+            transition: opacity @animTime ease .33s, top @animTime ease .33s, transform .6s ease .33s, background @animTime ease, left @animTime ease;
+
+            &:hover {
+                border: none;
+                background: rgba(255, 255, 255, .3);
+            }
+
+            &:active {
+                background: rgba(255, 255, 255, .7);
+            }
+
+            .cta-invite-submit-text {
+                font-weight: 500;
+                font-size: 1rem;
+                pointer-events: none;
+            }
+        }
+
+        .cta-invite-control-tryagain {
+            left: -4.5rem;
+            opacity: 0;
+        }
+
+        .cta-invite-control-submit {
+            left: 0;
+        }
+
+        .cta-invite-control-close {
+            left: 3.5rem;
+        }
+    }
+
+    .cta-secondary, .cta-secondary:hover {
+        display: block;
+        height: 3rem;
+        padding: .25rem .5rem;
+        background: rgba(255, 255, 255, 0);
+        border: 1px @bg-lightest solid;
+        font-size: .75rem;
+        color: @bg-lightest;
+        line-height: 1.5rem;
+        transition: background @animTime ease;
+
+        @media @medium {
+            font-size: 1rem;
+        }
+    }
+
+    .cta-secondary:hover {
+        background: rgba(255, 255, 255, .15);
+    }
+
+    .btn-scrollpage-container {
+        display: none;
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        transition: bottom @physicsBezier 3s;
+
+        @media @medium {
+            display: block;
+            bottom: 5rem;
+            left: 1.75rem;
+        }
+
+        .hide& {
+            bottom: -4rem;
+        }
+    }
+
+    .btn-scrollpage-text {
+        position: absolute;
+        top: -1rem;
+        left: 50%;
+        transform: translateX(-50%) scale(.7);
+        font-size: .875rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: all .2s ease;
+        text-align: center;
+    }
+
+    .icn-arrow-down-small {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: .5rem;
+        width: 16px;
+        margin-top: 7px;
+        transition: bottom .2s ease;
+        pointer-events: none;
+
+        path {
+            fill: @bg-lightest;
+        }
+    }
+
+    .btn-scrollpage {
+        overflow: visible;
+        width: 100%;
+        height: 100%;
+        display: block;
+        padding: 0;
+        background: rgba(255, 255, 255, 0);
+        border: 1px rgba(255, 255, 255, .5) solid;
+        transform: scale(1);
+        border-radius: 50%;
+        transition: transform 1.33s ease .15s, bottom @physicsBezier 1.33s, border .6s ease, margin @animTime ease;
+        animation: pulse infinite 2s;
+
+        .no-touch &:hover {
+            background: rgba(255, 255, 255, 0);
+            border: 1px rgba(255, 255, 255, .5) solid;
+            animation: pulsefinish 1 .6s;
+            animation-fill-mode: forwards;
+
+            ~ .icn-arrow-down-small {
+                bottom: -.5rem;
+            }
+
+            + .btn-scrollpage-text {
+                opacity: 1;
+                top: -.5rem;
+                transform: translateX(-50%) scale(1);
+            }
+        }  
+    }
+    
+    .iphone-preview {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('@{imgPath}/iphone-mobile-activenav.png') no-repeat 50% 0;
+        width: 100%;
+        height: 13rem;
+
+        @media @medium {
+            width: 19rem;
+            height: 30rem;
+            left: auto;
+            background: url('@{imgPath}/iphone-desktop-activenav.png') no-repeat 100% 0;
+            transform: translateX(15%);
+        }   
+    }
+}
+
+.advertising-container {
+    display: block;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    width: 7rem;
+    z-index: @layer0;
+
+    .advertising-title {
+        margin: 0;
+        font-size: .5rem;
+        color: @text-dark;
+        font-weight: 500;
+        text-align: center;
+        letter-spacing: 2px;
+    }
+
+    .advertising-brand {
+        width: 100%;
+        font-size: .5rem;
+    }
+}
+
+.landingpage {
+
+    .magazine-header, .section-header {
+        padding: 4rem 0 4rem 0;
+        text-align: center;
+
+        .title, .section-title {
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            color: @text-med;
+        }
+
+        .title + .section-title {
+            margin-bottom: 0.5rem;
+            color: @text-lighter;
+            font-size: 1.5rem;
+        }
+
+        a.all {
+            .link(@text-lighter);
+        }
+    }
+
+    .section-header {
+        padding: 5rem 0 2rem 0;
+    }
+
+    .post-header {
+        text-align: center;
+        padding: 4rem 0 4.5rem 0!important;
+
+        .excerpt {
+            color: @bg-lightest;
+        }
+
+        .preview {
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.5em;
+        }
+
+        .more {
+            padding: 1rem;
+            display: block;
+
+            .outlined {
+                .btn('outlined-padded');
+                display: block;
+                width: 8rem;
+                margin: 0 auto;
+                padding: .5rem 2rem;
+            }
+        }
+    }
+
+    .citizens {
+        &:extend(.margined);
+        margin-top:0;
+
+        .no-js & .slider {
+
+            > li {
+                display: inline-block;
+                max-width: 49%;
+                position: relative;
+                margin: 0 1.4% 2% 0;
+
+                &:nth-of-type(2n) {
+                    margin-right: 0;
+                }
+
+                .slide-overlay {
+                    .overlay-wrap(0);
+                }
+            }
+        }
+
+        .slide-overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute!important;
+            top: 0px;
+            bottom: 0px;
+            .overlay-wrap(0.5);
+
+            .floating {
+                position: absolute!important;
+                bottom: 0;
+                padding: 6rem 1.5rem 1.5rem 1.5rem;
+                color: @bg-lightest;
+                width: 100%;
+                .gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+
+                .name {
+                    font-size: 1.5rem;
+                    .link-lighten(@text-lighter);
+                }
+
+                .like-count {
+                    display: block;
+                    color: @text-lighter;
+                    margin: 0.25rem 0 0.3rem 0;
+
+                    .icn-hevnly-heart {
+                        path {
+                            fill: @text-lighter;  
+                        }
+                    }
+                }
+            }
+        }
+
+        /* SLIDER */
+        .slick-slider {
+            position: relative;
+            display: block;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -khtml-user-select: none;
+            -ms-touch-action: pan-y;
+            touch-action: pan-y;
+            -webkit-tap-highlight-color: transparent;
+
+            .slick-track, .slick-list {
+                transform: translate3d(0, 0, 0);
+            }
+
+            .slick-slide {
+                display: none;
+                float: left;
+                min-height: 1px;
+                position: relative;
+
+                .slide-overlay {
+                    .overlay-wrap(0);
+                }
+
+                @media @medium {
+                    transform: scale(0.95);
+
+                    .slide-overlay {
+                        .overlay-wrap(0.5);
+                    }
+
+                    .floating {
+                        visibility: hidden;
+                    }
+                }
+
+                &.slick-loading img {
+                    display: none;
+                }
+
+                &.dragging img {
+                    pointer-events: none;
+                }
+            }
+
+            .slick-center, .slick-active {
+                transform: scale(1);
+
+                .slide-overlay {
+                    .overlay-wrap(0);
+                }
+
+                @media @medium {
+                    .floating {
+                        visibility: visible;
+                    }
+                }
+            }
+        }
+
+        .slick-list {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+
+            &:focus {
+                outline: none;
+            }
+
+            &.dragging {
+                cursor: pointer;
+                cursor: hand;
+            }
+        }
+
+        .slick-track {
+            position: relative;
+            top: 0;
+            left: 0;
+            display: block;
+            .clearfix;
+        }
+
+        .slick-loading {
+            .slick-track {
+                visibility: hidden;
+            }
+
+            .slick-slide {
+                visibility: hidden;
+            }
+        }
+
+        .slick-initialized .slick-slide {
+            display: block;
+        }
+    }
+
+    /* CUSTOM PAGING */
+
+    .arrows {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-size: 30%!important;
+        .transition(background-position);
+    }
+     
+    .slidercontrol {
+        position: absolute;
+        margin: auto;
+        border-radius: @border-radius;
+        top: 0px;
+        bottom: 0px;
+        width: 3rem; 
+        height: 3rem;
+        background: rgba(0, 0, 0, .2);
+        z-index: 10;  
+    }
+     
+    .slider-prev {
+        .slidercontrol;
+        left: 2%;
+        cursor: pointer;
+
+        @media @medium {
+            left: 27%;
+        }
+     
+        a {
+            .arrows; 
+            background: url('@{imgPath}/icon-arrow-left-white.svg') 45% center no-repeat;
+     
+            .no-touch &:hover {
+                background-position: 35% center;
+            }
+        }
+
+        span {
+            display: none;
+        }
+    }
+     
+    .slider-next {
+        .slidercontrol;
+        right: 2%;
+        cursor: pointer; 
+
+        @media @medium {
+            right: 27%;
+        }
+     
+        a {
+            .arrows; 
+            background: url('@{imgPath}/icon-arrow-right-white.svg') 55% center no-repeat;
+     
+            .no-touch &:hover {
+                background-position: 65% center;
+            }
+        }
+
+        span {
+            display: none;
+        }
+    }
+
+    .more-features {
+        &:extend(.margined);
+        .clearfix;
+        margin-top: 0;
+
+        article {  
+            text-align: center;      
+            .overlay-wrap(.4);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20/1180*100%;
+            height: 320px;  
+            overflow: hidden;
+
+            @media @medium {
+                height: 450px;
+                .col(left, 580, 1180, 'off');
+
+                &:nth-of-type(1), &:nth-of-type(3) {
+                    margin-right:20/1180*100%;
+                }
+            } 
+
+            @media @large {
+                &:nth-of-type(2), &:nth-of-type(3) {
+                    .col(left, 380, 1180, 'off');
+                }
+
+                &:nth-of-type(1), &:nth-of-type(4) {
+                    .col(left, 780, 1180, 'off');
+                }
+
+                &:nth-of-type(1), &:nth-of-type(3) {
+                    margin-right:20/1180*100%;
+                }
+            }
+
+            &:hover {
+
+                .info .excerpt {
+
+                   @media @medium {
+                        height: auto;
+                        max-height: 150px;
+                        visibility: visible;
+                        overflow: visible;
+                        opacity: 1;
+                        padding-top: 1rem;
+                        color: @bg-lightest;
+                    }
+                }
+            }
+
+            .floating {
+                padding: 3rem 1.5rem 3rem 1.5rem;
+                color: @bg-lightest;
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+            }
+
+            .info {
+
+                span.title {
+                    width: 100%;
+                    display: inline-block;
+
+                    a {
+                        font-size: 2.5rem;
+                        .link(@bg-lightest);
+                        line-height: 1em;
+                    }
+                }
+
+                .excerpt {
+
+                    @media @medium {
+                        visibility: hidden;
+                        overflow: hidden;
+                        height: 0;
+                        transition: 0.1s;
+                        opacity: 0;
+                        padding-top: 0;
+                        width: 100%;    
+                    }
+                    
+                }
+
+                .more {
+                    padding-top: 0.5rem;
+                    display: block;
+
+                    .outlined {
+                        .btn('outlined');
+                    }
+                }
+            }
+        }
+
+        .more {
+            padding-top: 3rem;
+            display: block;
+            text-align: center;
+            .clearfix;
+
+            .all {
+                .btn('normal');
+                display: inline-block;
+                margin-top: 2rem;
+            }
+        }
+    }
+}
+
+//BOX CAMPAIGN STYLING - update img urls to real ones!
+.box-driver {
+    &:extend(.margined);
+    padding: 2.5rem 10% 80% 10%;
+    text-align: center;
+    position: relative;
+    background: url('https://raw.githubusercontent.com/hevnly/asset-bazaar/box-campaign/images/boxcamp/flat-lay-womens.png') no-repeat 100% 100%, url('https://raw.githubusercontent.com/hevnly/asset-bazaar/box-campaign/images/boxcamp/flat-lay-mens.png') no-repeat 0 110%;
+    background-size: 50%, 50%;
+    background-color: #e8e8e8;
+
+    @media @medium {
+        padding: 1.5rem 29% 5.5rem 29%;
+        background: url('https://raw.githubusercontent.com/hevnly/asset-bazaar/box-campaign/images/boxcamp/flat-lay-womens.png') no-repeat 105% 70%, url('https://raw.githubusercontent.com/hevnly/asset-bazaar/box-campaign/images/boxcamp/flat-lay-mens.png') no-repeat -5% 100%;
+        background-size: 30%, 30%;
+        background-color: #e8e8e8;
+    }
+
+    &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: url('@{imgPath}/landing-angled.png') no-repeat bottom;
+        padding-bottom: 20%;
+        background-size: contain;
+    }
+
+    h1 {
+        max-width: 400px;
+        margin: 2rem auto 1.5rem auto;
+        display: inline-block;
+        position: relative;
+        font-size: 2rem;
+    }
+
+    a {
+        .btn('normal');
+        display: inline-block;
+
+        .no-touch &:hover {
+            color: white;
+        }
+    }
+}

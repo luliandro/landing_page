@@ -1,0 +1,1 @@
+function userIsLoggedIn(){}function userIsLoggedOff(){}$(document).ready(function(){var o="http://blog.hevnly.com";$(document).data("blogUrl",o),$(document).data("appUrl","APP_URL"),$(document).data("profilePicBaseUrl","PROFILE_PIC_BASE_URL")});

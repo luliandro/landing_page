@@ -1,0 +1,108 @@
+//importing necessary bits to make the form pages look right...
+@import 'normalise.less';
+@import 'vars.less';
+@import 'mixins.less';
+@import 'basic.less';
+@import 'header.less';
+@import 'icons.less';
+@import 'buttons.less';
+@import 'spinner.less';
+@import 'login.less';
+
+//new styles; you might want to add them into login.less - I didn't want you to be wondering what's new and what's old!
+
+.micro-form {
+
+	&:after {
+		content: '';
+		clear: both;
+		display: block;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		line-height: normal;
+		text-align: center;
+		margin-top: 0;
+	}
+
+	h2 {
+		font-weight: normal;
+		text-align: center;
+		line-height: 1.25em;
+		font-size: 1rem;
+		margin-bottom: 0.4rem;
+		color: @text-med;
+	}
+
+	.whats-this {
+		color: @border-color-med;
+		font-size: 0.75rem;
+		text-align: center;
+		display: block;
+	}
+
+	.toggle-login-join, .box-details {
+		font-size: 0.875rem;
+		text-align: center;
+		margin: 2rem auto;
+		color: @text-light;
+		line-height: 1.25em;
+	}
+
+	.whats-this + .box-details {
+		margin: 1.25rem auto 2rem auto;
+	}
+
+	label {
+		font-size: 0.875rem; //smaller than your version, but matches my visuals - change back if you like :)
+	}
+
+	//radio styles are in hhg basic.less - copied here for clarity
+	.radio {
+		display: inline-block;
+		margin-right: 4%;
+		margin-top: 1rem;
+
+		label {
+			display: inline-block;
+			font-size: 0.875rem;
+			font-weight: normal;
+			margin: 0.1rem 0.25rem;
+		}
+
+		input[type=radio] {
+			display: inline-block;
+		}
+	}
+
+	.terms {
+		float: left;
+		width: 60%;
+		margin-top: 1.25rem;
+		color: @bg-med;
+		font-size: 0.875rem;
+
+		a {
+			color: @text-light;
+		}
+	}
+
+	.forgot {
+		display: block;
+		font-size: 0.75rem;
+		margin: 1.5rem 0 0 0;
+	}
+
+	button {
+		padding: .25rem 1.25rem;
+
+		&.normal {
+			font-size: 1rem;
+			margin-top: 1.25rem;
+			float: left;
+			max-width: 52%;
+		}
+	}
+
+}
