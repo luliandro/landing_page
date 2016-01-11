@@ -18,15 +18,12 @@ $(document).ready(function() {
         }
     );
 
-    //loadMoreFeatures();
-
     $("#load-more-features").click(function(){
         window.location = blogUrl;
     });
 });
 
 function buildPostObject(responseFromServer, apiUrl) {
-    console.log(responseFromServer);
     var date = new Date(responseFromServer.date);
 
     var object = {
@@ -41,25 +38,3 @@ function buildPostObject(responseFromServer, apiUrl) {
 
     return object;
 }
-
-// Is this method still necessary?
-
-//function loadMoreFeatures() {
-//    $.getJSON(
-//        $(document).data("blogUrl") + "/wp-json/posts?filter[posts_per_page]=12",
-//        function(responseFromServer) {
-//            var template = $("#article-template").html();
-//            if (template == undefined) {
-//                return;
-//            }
-//            Mustache.parse(template);   // optional, speeds up future uses
-//            $.each(responseFromServer, function(index, post) {
-//                if (index >= 8 ) {
-//                    var object = buildPostObject(post);
-//                    var rendered = Mustache.render(template, object);
-//                    $(rendered).appendTo($("#after-features"));
-//                }
-//            });
-//        }
-//    );
-//}
