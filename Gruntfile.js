@@ -183,27 +183,37 @@ module.exports = function(grunt) {
     });
 
     // Custom task to create per environment config file
-    grunt.registerTask('createConfigFile', 'Create per environment config file.', function(config) {
+    grunt.registerTask('createConfigFile', 'Create per environment config file.', function (config) {
+
         grunt.file.defaultEncoding = 'utf8';
         var env = grunt.option('env') || 'dev';
+
         var configFile = grunt.file.read('js/config.js');
+
+        var blogUrl = {
+            'dev': 'http://magazine.nightly.hevnly.com',
+            'nightly': 'http://magazine.nightly.hevnly.com',
+            'beta': 'http://magazine.beta.hevnly.com',
+            'prod': 'http://magazine.hevnly.com'
+        };
 
         var profilePicBaseUrl = {
             'dev': 'http://hevnly.dev/uploads/image/',
             'nightly': 'http://nightly.hevnly.com/uploads/image/',
             'beta': 'https://d2cyscqzuoxlax.cloudfront.net/',
             'prod': 'https://d2flxtrxean4fd.cloudfront.net/'
-        }
+        };
 
         var appUrl = {
             'dev': 'http://hevnly.dev',
             'nightly': 'http://nightly.hevnly.com',
             'beta': 'http://beta.hevnly.com',
             'prod': 'https://hevnly.com'
-        }
+        };
 
         var newConfig = configFile.replace("PROFILE_PIC_BASE_URL", profilePicBaseUrl[env]);
         newConfig = newConfig.replace("APP_URL", appUrl[env]);
+        newConfig = newConfig.replace("BLOG_URL", blogUrl[env]);
 
         grunt.file.write('build/js/config.js', newConfig); // TODO: change back to config.js.dist here and in index.html file and rename file to add dist extension
     });

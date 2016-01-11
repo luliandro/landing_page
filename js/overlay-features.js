@@ -1,9 +1,9 @@
 $(document).ready(function() {
     var templateId = "#overlay-feature-card-template";
-    loadFeatures($("#after-features"), templateId, lastTemplateId, 4);
+    loadFeatures($("#after-features"), templateId, 4);
 });
 
-function loadFeatures($container, templateId, count) {
+function loadFeatures ($container, templateId, count) {
     var blogUrl = $(document).data("blogUrl");
     $.getJSON(blogUrl + "/editions/edition-2.json")
         .done(
