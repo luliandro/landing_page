@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var templateId = "#overlay-feature-card-template";
+    var templateId = "#article-template";
     loadFeatures($("#after-features"), templateId, 4);
 });
 

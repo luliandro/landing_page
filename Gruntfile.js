@@ -89,6 +89,7 @@ module.exports = function(grunt) {
         clean: {
             afterBuild: [
                 './build/js/*.js',
+                './build/js/config.js.dist',
                 '!./build/js/*.min.js',
                 './build/bower.json',
                 './build/Gruntfile.js',
@@ -162,13 +163,13 @@ module.exports = function(grunt) {
         uniq.forEach(function (element) {
 
             var targetResource = element.match( /(src\s?\=\s?[\'\"])([^\'\"]*)([\'\"])/ )[2];
-            if (targetResource != "js/config.js") {
+            if (targetResource != "js/config.js.dist") {
                 srcs.push('build/' + targetResource);
             }
         });
 
         // add the new config file to the beginning of the srcs array
-        srcs.unshift('build/js/config.js');
+        srcs.unshift('build/js/config.js.dist');
 
         // set the config for concat
         var concat = {
@@ -188,7 +189,7 @@ module.exports = function(grunt) {
         grunt.file.defaultEncoding = 'utf8';
         var env = grunt.option('env') || 'dev';
 
-        var configFile = grunt.file.read('js/config.js');
+        var configFile = grunt.file.read('js/config.js.dist');
 
         var blogUrl = {
             'dev': 'http://magazine.nightly.hevnly.com',
@@ -215,7 +216,7 @@ module.exports = function(grunt) {
         newConfig = newConfig.replace("APP_URL", appUrl[env]);
         newConfig = newConfig.replace("BLOG_URL", blogUrl[env]);
 
-        grunt.file.write('build/js/config.js', newConfig); // TODO: change back to config.js.dist here and in index.html file and rename file to add dist extension
+        grunt.file.write('build/js/config.js.dist', newConfig); // TODO: change back to config.js.dist.dist here and in index.html file and rename file to add dist extension
     });
 
     // Default task(s).
