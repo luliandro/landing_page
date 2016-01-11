@@ -35,7 +35,7 @@ function buildPostObject(responseFromServer, apiUrl) {
         excerpt: responseFromServer.excerpt,
         preview: responseFromServer.content.substring(0, 450),
         image:  apiUrl + '/images/' + responseFromServer.editionNumber + '/' + responseFromServer.slug + '/' + responseFromServer.heroImage,
-        link: responseFromServer.link,
+        link: apiUrl + '/' + responseFromServer.editionName + '/' + responseFromServer.slug,
         subtitle: responseFromServer.subTitle
     }
 

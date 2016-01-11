@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 function loadFeatures(postType, $container, templateId, lastTemplateId, count) {
     var blogUrl = $(document).data("blogUrl");
-    $.getJSON(blogUrl + "/editions/edition-1.json")
+    $.getJSON(blogUrl + "/pages/page-1.json")
         .done(
             function (responseFromServer) {
                 console.log('MELLONS');
