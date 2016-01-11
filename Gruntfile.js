@@ -186,7 +186,7 @@ module.exports = function(grunt) {
     grunt.registerTask('createConfigFile', 'Create per environment config file.', function(config) {
         grunt.file.defaultEncoding = 'utf8';
         var env = grunt.option('env') || 'dev';
-        var configFile = grunt.file.read('js/config.js.dist');
+        var configFile = grunt.file.read('js/config.js');
 
         var profilePicBaseUrl = {
             'dev': 'http://hevnly.dev/uploads/image/',
@@ -205,7 +205,7 @@ module.exports = function(grunt) {
         var newConfig = configFile.replace("PROFILE_PIC_BASE_URL", profilePicBaseUrl[env]);
         newConfig = newConfig.replace("APP_URL", appUrl[env]);
 
-        grunt.file.write('build/js/config.js', newConfig);
+        grunt.file.write('build/js/config.js', newConfig); // TODO: change back to config.js.dist here and in index.html file and rename file to add dist extension
     });
 
     // Default task(s).
