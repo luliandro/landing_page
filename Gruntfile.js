@@ -12,6 +12,17 @@ module.exports = function(grunt) {
 
         pkg: grunt.file.readJSON('package.json'),
 
+        less: {
+            development: {
+                options: {
+                    paths: ["less/*"]
+                },
+                files: {
+                    "css/style.css": "less/style.less"
+                }
+            }
+        },
+
         copy: {
             build: {
                 src: [ '**' ],
@@ -59,27 +70,27 @@ module.exports = function(grunt) {
         },
 
         injector: {
-        options: {
-            template: 'index.html',
-                addRootSlash: true,
-                ignorePath: 'build'
-        },
-        local_dependencies: {
-            files: {
-                'build/index.html': ['build/js/*.min.js', 'build/css/*.css']
+            options: {
+                template: 'index.html',
+                    addRootSlash: true,
+                    ignorePath: 'build'
+            },
+            local_dependencies: {
+                files: {
+                    'build/index.html': ['build/js/*.min.js', 'build/css/*.css']
+                }
             }
-        }
-    },
+        },
 
-    rename: {
-        main: {
-            files: [
-                {
-                    src: ['build/css/style.css'],
-                    dest: 'build/css/' + cssFileName}
-            ]
-        }
-    },
+        rename: {
+            main: {
+                files: [
+                    {
+                        src: ['build/css/style.css'],
+                        dest: 'build/css/' + cssFileName}
+                ]
+            }
+        },
 
         watch: {
             files: ['bower_components/*'],
@@ -99,16 +110,19 @@ module.exports = function(grunt) {
                 './build/README.md',
                 './build/hhg-editor-notes.md',
                 './build/node_modules',
-                './build/landing'
+                './build/landing',
+                './css'
             ],
 
             beforeBuild: [
-                './build'
+                './build',
+                './css'
             ]
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-processhtml');
     grunt.loadNpmTasks('grunt-wiredep');
@@ -191,13 +205,6 @@ module.exports = function(grunt) {
 
         var configFile = grunt.file.read('js/config.js.dist');
 
-        var blogUrl = {
-            'dev': 'http://magazine.nightly.hevnly.com',
-            'nightly': 'http://magazine.nightly.hevnly.com',
-            'beta': 'http://magazine.beta.hevnly.com',
-            'prod': 'http://magazine.hevnly.com'
-        };
-
         var profilePicBaseUrl = {
             'dev': 'http://hevnly.dev/uploads/image/',
             'nightly': 'http://nightly.hevnly.com/uploads/image/',
@@ -214,13 +221,27 @@ module.exports = function(grunt) {
 
         var newConfig = configFile.replace("PROFILE_PIC_BASE_URL", profilePicBaseUrl[env]);
         newConfig = newConfig.replace("APP_URL", appUrl[env]);
-        newConfig = newConfig.replace("BLOG_URL", blogUrl[env]);
 
-        grunt.file.write('build/js/config.js.dist', newConfig); // TODO: change back to config.js.dist.dist here and in index.html file and rename file to add dist extension
+
+        grunt.file.write('build/js/config.js.dist', newConfig);
+    });
+
+    grunt.registerTask('injectDomain', 'Inject the correct domain for the magazine.', function (domainName) {
+
+        grunt.file.defaultEncoding = 'utf8';
+        var domainName = grunt.option('domainName') || 'http://magazine.nightly.hevnly.com';
+
+        var configFile = grunt.file.read('js/config.js.dist');
+
+        var blogUrl = domainName;
+
+        var newConfig = configFile.replace("BLOG_URL", blogUrl);
+
+        grunt.file.write('build/js/config.js.dist', newConfig);
     });
 
     // Default task(s).
-    grunt.task.registerTask('default', ['clean:beforeBuild', 'copy', 'createConfigFile', 'rename', 'concatJs', 'uglify', 'injector', 'processhtml', 'clean:afterBuild']);
+    grunt.task.registerTask('default', ['clean:beforeBuild', 'less', 'copy', 'createConfigFile', 'injectDomain', 'rename', 'concatJs', 'uglify', 'injector', 'processhtml', 'clean:afterBuild']);
     grunt.task.registerTask('changes', ['watch']);
 
 };
