@@ -18,7 +18,7 @@ module.exports = function(grunt) {
                     paths: ["less/*"]
                 },
                 files: {
-                    "css/style.css": "less/*.less"
+                    "css/style.css": "less/style.less"
                 }
             }
         },
@@ -110,11 +110,13 @@ module.exports = function(grunt) {
                 './build/README.md',
                 './build/hhg-editor-notes.md',
                 './build/node_modules',
-                './build/landing'
+                './build/landing',
+                './css'
             ],
 
             beforeBuild: [
-                './build'
+                './build',
+                './css'
             ]
         }
     });
@@ -239,7 +241,7 @@ module.exports = function(grunt) {
     });
 
     // Default task(s).
-    grunt.task.registerTask('default', ['clean:beforeBuild', 'copy', 'createConfigFile', 'injectDomain', 'rename', 'concatJs', 'uglify', 'injector', 'processhtml', 'clean:afterBuild']);
+    grunt.task.registerTask('default', ['clean:beforeBuild', 'less', 'copy', 'createConfigFile', 'injectDomain', 'rename', 'concatJs', 'uglify', 'injector', 'processhtml', 'clean:afterBuild']);
     grunt.task.registerTask('changes', ['watch']);
 
 };
