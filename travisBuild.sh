@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#  This script simply echoes the domain that should be used to deploy each branch
+
 META_DOMAIN="http://magazine.hevnly.com"
 case $TRAVIS_BRANCH in
   "develop")
