@@ -1,0 +1,13 @@
+$(document).ready(function() {
+
+    $(document).data("blogUrl", 'BLOG_URL');
+
+    $(document).data("appUrl", 'APP_URL');
+
+    $(document).data("profilePicBaseUrl", "PROFILE_PIC_BASE_URL");
+
+});
+
+//to be used in any project
+function userIsLoggedIn () {};
+function userIsLoggedOff () {};
