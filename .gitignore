@@ -3,5 +3,5 @@ sftp-config.json
 .idea
 node_modules
 build
-js/config.js.dist
+js/config.js
 .DS_Store
