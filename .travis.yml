@@ -27,3 +27,14 @@ deploy:
   local_dir: build
   on:
     branch: master
+- provider: s3
+  access_key_id: AKIAIOPUTZ5ERUZQLGAA
+  secret_access_key:
+    secure: WKoDn5XLfeHJu8bL/TzedQzK+hgJSrg2SeNc/u+N2ddf/xonkj6S5rtgarUrAzbyzAiIN2m4Fm7bVMrCeAe46znHIGrjXQ9c6FNY2VybwPZ/1di1adK1qzYREPPQ5M+mna7UmPQ+LvRbxhHJBrDrOs9YgttIqcNLjztqs/+3g3TwqfH6KfRz3yFVK6ZwJQw1qJI455guQnGWksmjcV7S/g6ksOhHfOFIDZZo1D1selvVpKeVCa1kE6CrhPIk1BN1GB3NDeHJGtqLDVcZYKM0Dfeysmli3/p/WlEpFlNuQRszRVsJGyNBMxo827JZkB/l4vX6KhEjMZsZau8CU2RrjY8rrtHMcEl1Q0imdNGGP2lnmuhSLprr06d5Elcw8lV8TZaV1TgZFAbc0aIP4rpi8xLHs8RKC2mo2uaMGIdZ+PwhWfNpTg/NqeXeg4chD4uY4JB4vbACPefO0xyDtyF8dETVUh4A3Mo6afqYR+tH201sE36LXDpAyQHC6VaAF8M4loFnlFNFjCIBbkNqH07SEDhS14VIDXsmBmcs2hpfTyuBs+BgRMz3+AAKfNTD9xZrAdHTwuMOmT9MFed+2dP5IbhoEnfWxNAk+VwCs8wCVmNKBy5/ncrp6Wf4Y4u9PGrdyM0K6wN3uKKi+veQQRyeuPNUY1BN/x5UhcPj6GEe7n4=
+  bucket: www.hevnly.com
+  region: eu-west-1
+  skip_cleanup: true
+  acl: public_read
+  local_dir: build
+  on:
+    tags: true
