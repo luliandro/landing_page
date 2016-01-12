@@ -18,7 +18,7 @@ module.exports = function(grunt) {
                     paths: ["less/*"]
                 },
                 files: {
-                    "css/style.css": "less/*"
+                    "css/style.css": "less/*.less"
                 }
             }
         },
@@ -239,7 +239,7 @@ module.exports = function(grunt) {
     });
 
     // Default task(s).
-    grunt.task.registerTask('default', ['clean:beforeBuild', 'less', 'copy', 'createConfigFile', 'injectDomain', 'rename', 'concatJs', 'uglify', 'injector', 'processhtml', 'clean:afterBuild']);
+    grunt.task.registerTask('default', ['clean:beforeBuild', 'copy', 'createConfigFile', 'injectDomain', 'rename', 'concatJs', 'uglify', 'injector', 'processhtml', 'clean:afterBuild']);
     grunt.task.registerTask('changes', ['watch']);
 
 };
