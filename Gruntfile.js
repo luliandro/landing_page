@@ -198,7 +198,7 @@ module.exports = function(grunt) {
     });
 
     // Custom task to create per environment config file
-    grunt.registerTask('createConfigFile', 'Create per environment config file.', function (config) {
+    grunt.registerTask('createConfigFile', 'Create per environment config file.', function (env) {
 
         grunt.file.defaultEncoding = 'utf8';
         var env = grunt.option('env') || 'dev';
@@ -231,7 +231,7 @@ module.exports = function(grunt) {
         grunt.file.defaultEncoding = 'utf8';
         var domainName = grunt.option('domainName') || 'http://magazine.nightly.hevnly.com';
 
-        var configFile = grunt.file.read('js/config.js.dist');
+        var configFile = grunt.file.read('build/js/config.js.dist');
 
         var blogUrl = domainName;
 
