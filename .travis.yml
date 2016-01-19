@@ -5,7 +5,7 @@ script:
 - npm install
 - grunt --domainName=$(./travisBuild.sh)
 deploy:
-  provider: s3
+- provider: s3
   access_key_id: AKIAI4XWGKH4APLJJZ2A
   secret_access_key:
     secure: OZ/29MFd2UCL4yimKjD4FDsDzw6WOlOOw+cEJHwUBmPt3/Wkz8UGsiZFg5JkbEEa9MjUbBB2bD3OZyff0gZ5b1W6/X6rRT92lTRHx0BgKn5ru/YvrdMQnGEzSTVtuAcKUcQhY8CNY5LLYePDM/b2sFCPZET5Bk1onsWP+o36w5W1i5JGHZCt9nZL66VuSe8RiTzDWrlvHZJOZ7OZ6+m5OBMLG4hEP0Svb06OIO5QjmgdDzpOTQ/lyiLAjsfUHnTXODFPg9vZAJtk1qY/P2JL7owjjDYv3m8/jHPjm63Lx3ZJ9E6mtNY4PdFM0XsFGPh2OpRJgsj95KqkBoVhZqPs8WSNeKmfpD1Siwc1cgwUrfVH6aoMOomivkevJFPygjemRIti25hPKu6/ly/qraP4tsEw+26/El+0i06ra2pY8wzVjQgfmnZ5Aa9nZT3/JgeZrPRZDcQSnZYaYa/VqhEB3gs8uzBGRm65fZRi6nib5x7kvpWhURZEFW2zU9raC8jgVW1pttQFU8AyIvRAlOXn/dHDRv0tL6uY1eBY4zpGtYsOh3bYnAXF12QuRvoc9+e8m5Do2NVa5k+Ao3cW2Jy0Yq8+ktSLq61+4btKINMrBwLEX45kMdKKfLVtwPNlAoJiXsvMROETP5jUfrdkGWlXOGHx4Hfe0v7+pn/v50OXCSI=
@@ -16,3 +16,25 @@ deploy:
   local_dir: build
   on:
     branch: develop
+- provider: s3
+  access_key_id: AKIAIGU3MM3U5CAZVB6Q
+  secret_access_key:
+    secure: U2QvNhFh+ZaKhNQhnfyabaDiSZCBfzqHaz6wO8+DD0sX8tJwJWIsfLLX/WJ/rqDkhtBhpknjuh8xmbyLBKeo4jsytJLz1uREuARb+YVKSnXPrrhlDDdYJ/YV68KSCFCU5PY2XQflG9FZMT9NoU+fGXzzkm7ApGGaj01zOuEXv6undwdQCSILQ4ysCWAIDd5Ll/PDmzdyMvSQZeG1Dp+7C38lKPWDNRE2EpnjXFvupxqzIWTAz/OURkj+m6KBMx79z03KPAP/k0UnS0Nfq66cvQrPgbKZTvtw+ZwXR9k56m3CacecOXaSSAXs+uXYX/u+IwQFv6hcOCZb2JNOYT5GbkT9sERG5wwMHkDTi3faC64Zp8eXwuGnFs/6f1TrutGgtbta6W7hYPRp55BVJ5HYvKozC5Y8tpa7Nz8A3brEdjqYgFGOkBBfEzox7HCEIiGAsTuW3fEEVCmOeUvClONfItT4S5nZf+ta/mojXl1AZztnvnoRwP+jp4eXCqW8aDnP3tb+eTer2MXRU1guawaz3ssyuZ1EmG52agGoL1MoodLUocx1EoXFYdOAKrN9avberWSix+TA8UjXPqDofluSKkbuvfZIubQZJF1KwhtJfqeH5r748MY9PfWG7sOybYR4WGhVLTo1amTeNhNF42ih8hqmjN6up7xkyoOG551irJE=
+  bucket: www.beta.hevnly.com
+  region: eu-west-1
+  skip_cleanup: true
+  acl: public_read
+  local_dir: build
+  on:
+    branch: master
+- provider: s3
+  access_key_id: AKIAIOPUTZ5ERUZQLGAA
+  secret_access_key:
+    secure: WKoDn5XLfeHJu8bL/TzedQzK+hgJSrg2SeNc/u+N2ddf/xonkj6S5rtgarUrAzbyzAiIN2m4Fm7bVMrCeAe46znHIGrjXQ9c6FNY2VybwPZ/1di1adK1qzYREPPQ5M+mna7UmPQ+LvRbxhHJBrDrOs9YgttIqcNLjztqs/+3g3TwqfH6KfRz3yFVK6ZwJQw1qJI455guQnGWksmjcV7S/g6ksOhHfOFIDZZo1D1selvVpKeVCa1kE6CrhPIk1BN1GB3NDeHJGtqLDVcZYKM0Dfeysmli3/p/WlEpFlNuQRszRVsJGyNBMxo827JZkB/l4vX6KhEjMZsZau8CU2RrjY8rrtHMcEl1Q0imdNGGP2lnmuhSLprr06d5Elcw8lV8TZaV1TgZFAbc0aIP4rpi8xLHs8RKC2mo2uaMGIdZ+PwhWfNpTg/NqeXeg4chD4uY4JB4vbACPefO0xyDtyF8dETVUh4A3Mo6afqYR+tH201sE36LXDpAyQHC6VaAF8M4loFnlFNFjCIBbkNqH07SEDhS14VIDXsmBmcs2hpfTyuBs+BgRMz3+AAKfNTD9xZrAdHTwuMOmT9MFed+2dP5IbhoEnfWxNAk+VwCs8wCVmNKBy5/ncrp6Wf4Y4u9PGrdyM0K6wN3uKKi+veQQRyeuPNUY1BN/x5UhcPj6GEe7n4=
+  bucket: www.hevnly.com
+  region: eu-west-1
+  skip_cleanup: true
+  acl: public_read
+  local_dir: build
+  on:
+    tags: true
