@@ -211,6 +211,7 @@ module.exports = function(grunt) {
         var newConfig = configFile.replace("PROFILE_PIC_BASE_URL", _env);
 
         grunt.file.write('build/js/config.js.dist', newConfig);
+        console.log(_env);
 
     });
 
@@ -227,6 +228,7 @@ module.exports = function(grunt) {
         var newConfig = configFile.replace("APP_URL", env);
 
         grunt.file.write('build/js/config.js.dist', newConfig);
+        console.log(env);
 
     });
 
@@ -243,6 +245,8 @@ module.exports = function(grunt) {
         var newConfig = configFile.replace("BLOG_URL", blogUrl);
 
         grunt.file.write('build/js/config.js.dist', newConfig);
+        console.log(blogUrl);
+        
     });
 
     // Default task(s).
