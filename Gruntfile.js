@@ -198,37 +198,42 @@ module.exports = function(grunt) {
     });
 
     // Custom task to create per environment config file
-    grunt.registerTask('createConfigFile', 'Create per environment config file.', function (env) {
+    grunt.registerTask('injectProfilePicUrl', 'Inject correct profile pic url', function (picDomain) {
 
         grunt.file.defaultEncoding = 'utf8';
-        var env = grunt.option('env') || 'dev';
 
-        var configFile = grunt.file.read('js/config.js.dist');
+        var profilePicUrl = grunt.option('picDomain') || 'http://hevnly.dev/uploads/image/';
 
-        var profilePicBaseUrl = {
-            'dev': 'http://hevnly.dev/uploads/image/',
-            'nightly': 'http://nightly.hevnly.com/uploads/image/',
-            'beta': 'https://d2cyscqzuoxlax.cloudfront.net/',
-            'prod': 'https://d2flxtrxean4fd.cloudfront.net/'
-        };
+        var configFile = grunt.file.read('build/js/config.js.dist');
 
-        var appUrl = {
-            'dev': 'http://hevnly.dev',
-            'nightly': 'http://nightly.hevnly.com',
-            'beta': 'http://beta.hevnly.com',
-            'prod': 'https://hevnly.com'
-        };
+        var _env = profilePicUrl;
 
-        var newConfig = configFile.replace("PROFILE_PIC_BASE_URL", profilePicBaseUrl[env]);
-        newConfig = newConfig.replace("APP_URL", appUrl[env]);
-
+        var newConfig = configFile.replace("PROFILE_PIC_BASE_URL", _env);
 
         grunt.file.write('build/js/config.js.dist', newConfig);
+
+    });
+
+    grunt.registerTask('injectApiUrl', 'Inject correct api url', function (apiDomain) {
+
+        grunt.file.defaultEncoding = 'utf8';
+
+        var _apiUrl = grunt.option('apiDomain') || 'http://hevnly.dev';
+
+        var configFile = grunt.file.read('build/js/config.js.dist');
+
+        var env = _apiUrl;
+
+        var newConfig = configFile.replace("APP_URL", env);
+
+        grunt.file.write('build/js/config.js.dist', newConfig);
+
     });
 
     grunt.registerTask('injectDomain', 'Inject the correct domain for the magazine.', function (domainName) {
 
         grunt.file.defaultEncoding = 'utf8';
+
         var domainName = grunt.option('domainName') || 'http://magazine.nightly.hevnly.com';
 
         var configFile = grunt.file.read('build/js/config.js.dist');
@@ -241,7 +246,7 @@ module.exports = function(grunt) {
     });
 
     // Default task(s).
-    grunt.task.registerTask('default', ['clean:beforeBuild', 'less', 'copy', 'createConfigFile', 'injectDomain', 'rename', 'concatJs', 'uglify', 'injector', 'processhtml', 'clean:afterBuild']);
+    grunt.task.registerTask('default', ['clean:beforeBuild', 'less', 'copy', 'injectProfilePicUrl', 'injectApiUrl', 'injectDomain', 'rename', 'concatJs', 'uglify', 'injector', 'processhtml', 'clean:afterBuild']);
     grunt.task.registerTask('changes', ['watch']);
 
 };
