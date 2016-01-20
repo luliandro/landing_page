@@ -239,6 +239,7 @@ module.exports = function(grunt) {
         var domainName = grunt.option('domainName') || 'http://magazine.nightly.hevnly.com';
 
         var configFile = grunt.file.read('build/js/config.js.dist');
+        console.log(configFile);
 
         var blogUrl = domainName;
 
@@ -246,7 +247,7 @@ module.exports = function(grunt) {
 
         grunt.file.write('build/js/config.js.dist', newConfig);
         console.log(blogUrl);
-        
+
     });
 
     // Default task(s).
