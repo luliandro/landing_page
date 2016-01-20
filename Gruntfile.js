@@ -201,6 +201,7 @@ module.exports = function(grunt) {
     grunt.registerTask('injectProfilePicUrl', 'Inject correct profile pic url', function (picDomain) {
 
         grunt.file.defaultEncoding = 'utf8';
+        console.log(grunt.option('picDomain'));
 
         var profilePicUrl = grunt.option('picDomain') || 'http://hevnly.dev/uploads/image/';
 
@@ -217,6 +218,7 @@ module.exports = function(grunt) {
     grunt.registerTask('injectApiUrl', 'Inject correct api url', function (apiDomain) {
 
         grunt.file.defaultEncoding = 'utf8';
+        console.log(grunt.option('apiDomain'));
 
         var _apiUrl = grunt.option('apiDomain') || 'http://hevnly.dev';
 
@@ -233,6 +235,7 @@ module.exports = function(grunt) {
     grunt.registerTask('injectDomain', 'Inject the correct domain for the magazine.', function (domainName) {
 
         grunt.file.defaultEncoding = 'utf8';
+        console.log(grunt.option('domainName'));
 
         var domainName = grunt.option('domainName') || 'http://magazine.nightly.hevnly.com';
 
@@ -243,6 +246,7 @@ module.exports = function(grunt) {
         var newConfig = configFile.replace("BLOG_URL", blogUrl);
 
         grunt.file.write('build/js/config.js.dist', newConfig);
+
     });
 
     // Default task(s).

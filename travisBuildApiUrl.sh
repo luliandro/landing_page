@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # This script simply echoes the domain that should be used to deploy each branch
 
 META_DOMAIN="https://hevnly.com"
