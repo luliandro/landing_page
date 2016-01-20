@@ -3,7 +3,7 @@ node_js:
 - stable
 script:
 - npm install
-- grunt --domainName=$(./travisBuild.sh)
+- grunt --picDomain=$(./travisBuildPicUrl.sh) --apiDomain=$(./travisBuildApiUrl.sh) --domainName=$(./travisBuild.sh)
 deploy:
 - provider: s3
   access_key_id: AKIAI4XWGKH4APLJJZ2A
