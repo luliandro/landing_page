@@ -8,7 +8,7 @@ case $TRAVIS_BRANCH in
     META_DOMAIN="http://magazine.nightly.hevnly.com"
     ;;
   "master")
-    META_DOMAIN="http://magazine.beta.hevnly.com"
+    META_DOMAIN="http://magazine.staging.hevnly.com"
     ;;
   *)
     META_DOMAIN="http://magazine.hevnly.com"

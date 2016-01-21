@@ -8,7 +8,7 @@ case $TRAVIS_BRANCH in
     META_DOMAIN="http://nightly.hevnly.com/uploads/image/"
     ;;
   "master")
-    META_DOMAIN="https://d2cyscqzuoxlax.cloudfront.net/"
+    META_DOMAIN="https://image.staging.hevnly.com/"
     ;;
   *)
     META_DOMAIN="https://d2flxtrxean4fd.cloudfront.net/"
