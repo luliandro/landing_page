@@ -153,6 +153,7 @@
 					</nav>
 				</header>
 				<h1>the holy grail of style</h1>
+				<input type="search" class="search" name="search" placeholder="search" style="color:black">
 				<p>discover contemporary brands and accessories on hevnly | the invitation-only shopping platform and magazine.</p>
 				
 				<!-- CTA Buttons -->
@@ -408,7 +409,7 @@
 
 		<script>
 		$(document).ready(function() {
-            $(".countdown").TimeCircles({
+      $(".countdown").TimeCircles({
 			    "animation": "smooth",
 			    "bg_width": 1,
 			    "fg_width": 0.03,
@@ -436,6 +437,12 @@
 			        }
 			    }
 			});
+
+			$(".search").keypress(function(e) {
+    			if (e.which == 13) {
+    					location.href = 'http://app.staging.hevnly.com/search/' + this.value;
+    			}
+    	});
 		});
         </script>
 
