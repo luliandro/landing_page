@@ -19,7 +19,7 @@ $(document).ready(function() {
     );
 
     $("#load-more-features").click(function(){
-        window.location = blogUrl;
+        window.location = 'http://magazine.hevnly.com/'; // This has been hardcoded. Used to be blogUrl
     });
 });
 
