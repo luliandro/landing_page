@@ -1,6 +1,5 @@
 $(document).ready(function() {
     blogUrl = $(document).data("blogUrl");
-  console.log(blogUrl);
     //featured post
     $.getJSON(blogUrl + "/latest.json").done(
         function(responseFromServer) {
