@@ -7,10 +7,10 @@ case $TRAVIS_BRANCH in
     META_DOMAIN="http://nightly.hevnly.com"
     ;;
   "master")
-    META_DOMAIN="http://staging.hevnly.com"
+    META_DOMAIN="http://meta.staging.hevnly.com"
     ;;
   *)
-    META_DOMAIN="https://hevnly.com"
+    META_DOMAIN="https://meta.hevnly.com"
     ;;
 esac
 
