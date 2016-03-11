@@ -31,7 +31,7 @@ function buildPostObject(responseFromServer, apiUrl) {
         date: date.toLocaleDateString("en-GB"),
         excerpt: responseFromServer.excerpt,
         preview: responseFromServer.content.substring(0, 450),
-        image:  apiUrl + '/images/' + responseFromServer.editionNumber + '/' + responseFromServer.slug + '/' + responseFromServer.heroImage,
+        image:  responseFromServer.heroImage,
         link: apiUrl + '/' + responseFromServer.editionName + '/' + responseFromServer.slug,
         subtitle: responseFromServer.subTitle
     }
