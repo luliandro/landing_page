@@ -6,17 +6,6 @@ script:
 - grunt --picDomain=$(./travisBuildPicUrl.sh) --apiDomain=$(./travisBuildApiUrl.sh) --domainName=$(./travisBuild.sh)
 deploy:
 - provider: s3
-  access_key_id: AKIAI4XWGKH4APLJJZ2A
-  secret_access_key:
-    secure: OZ/29MFd2UCL4yimKjD4FDsDzw6WOlOOw+cEJHwUBmPt3/Wkz8UGsiZFg5JkbEEa9MjUbBB2bD3OZyff0gZ5b1W6/X6rRT92lTRHx0BgKn5ru/YvrdMQnGEzSTVtuAcKUcQhY8CNY5LLYePDM/b2sFCPZET5Bk1onsWP+o36w5W1i5JGHZCt9nZL66VuSe8RiTzDWrlvHZJOZ7OZ6+m5OBMLG4hEP0Svb06OIO5QjmgdDzpOTQ/lyiLAjsfUHnTXODFPg9vZAJtk1qY/P2JL7owjjDYv3m8/jHPjm63Lx3ZJ9E6mtNY4PdFM0XsFGPh2OpRJgsj95KqkBoVhZqPs8WSNeKmfpD1Siwc1cgwUrfVH6aoMOomivkevJFPygjemRIti25hPKu6/ly/qraP4tsEw+26/El+0i06ra2pY8wzVjQgfmnZ5Aa9nZT3/JgeZrPRZDcQSnZYaYa/VqhEB3gs8uzBGRm65fZRi6nib5x7kvpWhURZEFW2zU9raC8jgVW1pttQFU8AyIvRAlOXn/dHDRv0tL6uY1eBY4zpGtYsOh3bYnAXF12QuRvoc9+e8m5Do2NVa5k+Ao3cW2Jy0Yq8+ktSLq61+4btKINMrBwLEX45kMdKKfLVtwPNlAoJiXsvMROETP5jUfrdkGWlXOGHx4Hfe0v7+pn/v50OXCSI=
-  bucket: www.nightly.hevnly.com
-  region: eu-west-1
-  skip_cleanup: true
-  acl: public_read
-  local_dir: build
-  on:
-    branch: develop
-- provider: s3
   access_key_id: AKIAJITA2DKMLDFZTPRA
   secret_access_key:
     secure: WxVbppno/L4tOgPd/jZeReIdP2Zl6WCaitgdDdZykEkCsXIB8x0fmFsXLfm7Qw/FQlfdg1EIxBLU3nBsPKf+8u0SJvVo3VPkYje7KjKZxNkwxoB/V7bWXFZODehDV/0SnofDG0mKnH+qc9rXmbJ4IIDVovswbQ3HgBJdcEp6c1+HfyyiTh0aPxl5Hi2/WNOsjDnBLerVWalM5pXv1R0r85w9J9X6eMwC2hePRIbu9bV7rKuLmNNBREM7M0NNdSDxAAVm4ci7Zd8DzoxJ/ygJ8eS//T1hc8MHt1yOKL298Wz45wdz+w1Rxn9Hy5yd0S81Z+ASaJJg7V4pGc0tpF1P17OPAvZT7MZTnlzMapN8PjHihbSaf40FdSiNeYJWwg6FGk5DDHIZTzxlz0ytLWqK2ohOU6ZAErC/usi3dnNWz/O8Xghw07l631NAokp2N6J/dFaaJdjlkTp1JPx6zUoqPsdPknzyCq/lXZVE8QGG4pWJ7uCJoEwW8iidujUGVxPYCkZiS6sCeSNIz2J2y6yHj0471WEmcdHPx2kUUQ35KjhU1uSoWBN9IKJZknoDTIP8xPP2uh6ru6sWS6zFXx0RVD0ip7Y+fAcfyquoFsSf+JsqRiWouuP7SmyYJzRld9Rg6J9jcghGRReBZNrT5PEQWO758nhkPXH9i65+/w0e6TQ=
@@ -38,3 +27,7 @@ deploy:
   local_dir: build
   on:
     tags: true
+notifications:
+  hipchat:
+    rooms:
+      secure: JF2qZa/kV3aORAaPueHB39w8MEGp2tjVUJ2iKjYjEqL6lDdANqsibBT2ajj0Mo+iFNF/QFN4SZxar0j8tSvg+r4UfwROP4tZHqG1Grf2EUTYLdedTgPwKJtE+rbROxHG7pW0N1A8eCftELaZP5O49YvWyoIWAVkGnymQze2X4VkK5EC0rNgmSjB0GpX3RQRIWDlRM5oyjam8bzQ9WYtBPVTb7euoOQQ6XOOeZiO7bBpDQwS7L/WeOvcnZZVlMXWonl7gIk1qnYsuVEX4GYG/aJKotVu+hheJrFV59mdWV8vitshTPiQnzvhA4kNrnKZKTQCQr9LFNocqAFKHXK1+lK29KxfdJwlTZ1A7nI3Vp1LFmnPJ48x3uKkrcc+BqbYWf2WaF7hMVRty2XF3gX9u1qdzuioFPSs44fcLSxG1uCkPcPkuTO29jwLB3pnDO0Ywt6hzK777fN2gmH3yFp/mMGgzSNnw1NzPng4whomfnk3rKbfDWGB0jSOh/MfXZ/SOSEkP7auh0fXyHk3fsf0tqi5573LCTMzyYg/iHs+A3VlLuQdYanQAjSdPvMrINdtyLFiLL23j0RIXiayvyE4I0ycTKVbwYt4+HHrVzux+Zfd3eiTPFpLO7XddRHit1H4MM13jc7qPTagnkZpUlajLrg91G7mOnuo/s0SiByjqaLw=
