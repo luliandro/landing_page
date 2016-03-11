@@ -237,7 +237,7 @@ module.exports = function(grunt) {
         grunt.file.defaultEncoding = 'utf8';
         console.log(grunt.option('domainName'));
 
-        var domainName = grunt.option('domainName') || 'http://magazine.nightly.hevnly.com';
+        var domainName = grunt.option('domainName') || 'http://magazine.hevnly.com';
 
         var configFile = grunt.file.read('build/js/config.js.dist');
 
