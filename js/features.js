@@ -1,5 +1,6 @@
 $(document).ready(function() {
     blogUrl = $(document).data("blogUrl");
+  console.log(blogUrl);
     //featured post
     $.getJSON(blogUrl + "/latest.json").done(
         function(responseFromServer) {
@@ -32,7 +33,7 @@ function buildPostObject(responseFromServer, apiUrl) {
         excerpt: responseFromServer.excerpt,
         preview: responseFromServer.content.substring(0, 450),
         image:  responseFromServer.heroImage,
-        link: apiUrl + '/' + responseFromServer.editionName + '/' + responseFromServer.slug,
+        link: 'http://magazine.hevnly.com/' + responseFromServer.editionName + '/' + responseFromServer.slug,
         subtitle: responseFromServer.subTitle
     }
 
