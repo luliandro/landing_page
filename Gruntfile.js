@@ -250,7 +250,7 @@ module.exports = function(grunt) {
     });
 
     // Default task(s).
-    grunt.task.registerTask('default', ['clean:beforeBuild', 'less', 'copy', 'injectProfilePicUrl', 'injectApiUrl', 'injectDomain', 'rename', 'concatJs', 'uglify', 'injector', 'processhtml', 'clean:afterBuild']);
+    grunt.task.registerTask('default', ['clean:beforeBuild', 'less', 'copy', 'injectProfilePicUrl', 'injectApiUrl', 'injectDomain', 'concatJs', 'uglify', 'injector', 'processhtml', 'clean:afterBuild']);
     grunt.task.registerTask('changes', ['watch']);
 
 };
