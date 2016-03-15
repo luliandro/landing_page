@@ -10,15 +10,17 @@ $(document).ready(function() {
         inviteLabel         = inviteContainer.find('.cta-invite-label'),
         inviteInput         = inviteContainer.find('.cta-invite-input'),
         inviteSubmit        = inviteContainer.find('.cta-invite-submit-form'),
-        inviteClose         = inviteContainer.find('.cta-invite-control-close');
-        inviteTryAgain      = inviteContainer.find('.cta-invite-control-tryagain');
-        inviteErrorMessage  = inviteContainer.find('.cta-invite-error-message');
+        inviteClose         = inviteContainer.find('.cta-invite-control-close'),
+        inviteTryAgain      = inviteContainer.find('.cta-invite-control-tryagain'),
+        inviteErrorMessage  = inviteContainer.find('.cta-invite-error-message'),
+        followInsta         = $('.insta-followus');
 
     function showInviteForm() {
         
         inviteContainer.addClass('active');
         inviteInput.focus().attr('placeholder', 'your email');
         inviteLabel.addClass('cta-invite-submit-form');
+        followInsta.addClass('hide'); // hide the Instagram link
     }
 
     function resetInviteForm(event) {
@@ -28,6 +30,7 @@ $(document).ready(function() {
         inviteContainer.removeClass('active').removeClass('error');
         inviteInput.val('');
         inviteLabel.removeClass('cta-invite-submit-form');
+        followInsta.removeClass('hide'); // hide the Instagram link
     }
 
     function sendInviteForm() {
