@@ -12,17 +12,6 @@ module.exports = function(grunt) {
 
         pkg: grunt.file.readJSON('package.json'),
 
-        less: {
-            development: {
-                options: {
-                    paths: ["less/*"]
-                },
-                files: {
-                    "css/style.css": "less/style.less"
-                }
-            }
-        },
-
         copy: {
             build: {
                 src: [ '**' ],
@@ -77,18 +66,8 @@ module.exports = function(grunt) {
             },
             local_dependencies: {
                 files: {
-                    'build/index.html': ['build/js/*.min.js', 'build/css/*.css']
+                    'build/index.html': ['build/js/*.min.js']
                 }
-            }
-        },
-
-        rename: {
-            main: {
-                files: [
-                    {
-                        src: ['build/css/style.css'],
-                        dest: 'build/css/' + cssFileName}
-                ]
             }
         },
 
@@ -105,18 +84,15 @@ module.exports = function(grunt) {
                 './build/bower.json',
                 './build/Gruntfile.js',
                 './build/package.json',
-                './build/less',
                 './build/npm-debug.log',
                 './build/README.md',
                 './build/hhg-editor-notes.md',
                 './build/node_modules',
-                './build/landing',
-                './css'
+                './build/landing'
             ],
 
             beforeBuild: [
-                './build',
-                './css'
+                './build'
             ]
         }
     });
@@ -250,7 +226,7 @@ module.exports = function(grunt) {
     });
 
     // Default task(s).
-    grunt.task.registerTask('default', ['clean:beforeBuild', 'less', 'copy', 'injectProfilePicUrl', 'injectApiUrl', 'injectDomain', 'concatJs', 'uglify', 'injector', 'processhtml', 'clean:afterBuild']);
+    grunt.task.registerTask('default', ['clean:beforeBuild', 'copy', 'injectProfilePicUrl', 'injectApiUrl', 'injectDomain', 'concatJs', 'uglify', 'injector', 'processhtml', 'clean:afterBuild']);
     grunt.task.registerTask('changes', ['watch']);
 
 };
