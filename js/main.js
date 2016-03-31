@@ -355,10 +355,16 @@ jQuery(document).ready(function() {
         searchTags();
     });
 
-    //end filter by tags
-
+    // end filter by tags
     $('.browser-features').bind('click', function(event) {
         event.preventDefault();
         window.location = $(document).data("blogUrl");
+    });
+
+    // remove notification when clicked
+    var notification = $('.ws-notification');
+
+    notification.on('click', function() {
+        notification.removeClass('-show');
     });
 });
