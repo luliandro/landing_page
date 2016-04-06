@@ -45,7 +45,6 @@
 		<script src="js/features.js"></script>
 		<script src="js/time-circles.js"></script>
 		<script src="js/functions.js"></script>
-		<script src="js/header.js"></script>
 		<script src="js/overlay-features.js"></script>
 		<!--build-js-end-->
 		<!-- /build -->
@@ -238,8 +237,6 @@
 				<!-- remove before PR is submitted -->
 			</article>
 
-			<!--BOX CAMPAIGN DRIVER GOES HERE-->
-
 			<div class="section-header">
 				<div class="section-title">more from the magazine</div>
 			</div>
@@ -254,110 +251,115 @@
 			</section>
 		</main>
 
-		<!--FOOTER-->
-		<footer role="contentinfo">
-		    <div class="social-links clearfix">
-		        <a target="_blank" href="https://twitter.com/hevnly">
-		            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" class="icn-twitter"><path d="M21.4,6.2c-0.7,0.3-1.4,0.5-2.2,0.6c0.8-0.5,1.4-1.2,1.7-2.1c-0.7,0.4-1.6,0.8-2.5,0.9 c-0.7-0.8-1.7-1.2-2.8-1.2c-2.1,0-3.9,1.7-3.9,3.9c0,0.3,0,0.6,0.1,0.9c-3.2-0.2-6.1-1.7-8-4C3.6,5.6,3.4,6.3,3.4,7 c0,1.3,0.7,2.5,1.7,3.2c-0.6,0-1.2-0.2-1.8-0.5c0,0,0,0,0,0c0,1.9,1.3,3.4,3.1,3.8c-0.3,0.1-0.7,0.1-1,0.1c-0.2,0-0.5,0-0.7-0.1 c0.5,1.5,1.9,2.7,3.6,2.7c-1.3,1-3,1.7-4.8,1.7c-0.3,0-0.6,0-0.9-0.1c1.7,1.1,3.7,1.7,5.9,1.7c7.1,0,11-5.9,11-11c0-0.2,0-0.3,0-0.5 C20.2,7.6,20.9,6.9,21.4,6.2z"></path></svg>
-		            <sub>@hevnly</sub>
-		        </a>
-		        <a target="_blank" href="http://instagram.com/curatedbyhevnly/">
-		            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" class="icn-instagram"><path d="M5.3,2.9h13.4c1.3,0,2.3,0.9,2.3,2.3v13.4c0,1.4-1,2.3-2.3,2.3H5.3C4,20.9,3,19.9,3,18.6V5.2 C3,3.8,4,2.9,5.3,2.9L5.3,2.9z M16.1,4.9c-0.4,0-0.8,0.4-0.8,0.8v1.9c0,0.4,0.4,0.8,0.8,0.8h2c0.4,0,0.8-0.4,0.8-0.8V5.7 c0-0.4-0.4-0.8-0.8-0.8L16.1,4.9L16.1,4.9z M18.9,10.5h-1.6c0.1,0.5,0.2,1,0.2,1.5c0,3-2.5,5.4-5.6,5.4c-3.1,0-5.6-2.4-5.6-5.4 c0-0.5,0.1-1.1,0.2-1.5H5v7.6c0,0.4,0.3,0.7,0.7,0.7h12.5c0.4,0,0.7-0.3,0.7-0.7L18.9,10.5L18.9,10.5z M12,8.3 c-2,0-3.6,1.6-3.6,3.5s1.6,3.5,3.6,3.5c2,0,3.6-1.6,3.6-3.5S14,8.3,12,8.3z"></path></svg>
-		            <sub>@curatedbyhevnly</sub>
-		        </a>
-		        <a target="_blank" href="https://www.facebook.com/hevnlyholygrail">
-		            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" class="icn-facebook"><path d="M9.9,20.9v-8.4H7.7v-3h2.2c0,0,0-1.2,0-2.6c0-2,1.3-3.9,4.3-3.9c1.2,0,2.1,0.1,2.1,0.1L16.2,6 c0,0-0.9,0-1.9,0c-1.1,0-1.3,0.5-1.3,1.3c0,0.7,0-1.4,0,2.2h3.3l-0.1,3h-3.1v8.4H9.9z"></path></svg>
-		            <sub>/hevnlyholygrail</sub>
-		        </a>
-		    </div>
+		<!-- FOOTER -->
+		<footer role="contentinfo" class="ws-footer">
+	        <div class="ws-footer-socials clearfix">
+	            <a target="_blank" href="https://twitter.com/hevnly" class="ws-footer-socials-link">
+	            	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" class="icn-twitter">
+	            		<path d="M21.4,6.2c-0.7,0.3-1.4,0.5-2.2,0.6c0.8-0.5,1.4-1.2,1.7-2.1c-0.7,0.4-1.6,0.8-2.5,0.9 c-0.7-0.8-1.7-1.2-2.8-1.2c-2.1,0-3.9,1.7-3.9,3.9c0,0.3,0,0.6,0.1,0.9c-3.2-0.2-6.1-1.7-8-4C3.6,5.6,3.4,6.3,3.4,7 c0,1.3,0.7,2.5,1.7,3.2c-0.6,0-1.2-0.2-1.8-0.5c0,0,0,0,0,0c0,1.9,1.3,3.4,3.1,3.8c-0.3,0.1-0.7,0.1-1,0.1c-0.2,0-0.5,0-0.7-0.1 c0.5,1.5,1.9,2.7,3.6,2.7c-1.3,1-3,1.7-4.8,1.7c-0.3,0-0.6,0-0.9-0.1c1.7,1.1,3.7,1.7,5.9,1.7c7.1,0,11-5.9,11-11c0-0.2,0-0.3,0-0.5 C20.2,7.6,20.9,6.9,21.4,6.2z"></path>
+	            	</svg>
+	            	<sub class="ws-footer-socials-sub">@hevnly</sub>
+	          	</a>
+	          	<a target="_blank" href="http://instagram.com/curatedbyhevnly/" class="ws-footer-socials-link">
+	            	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" class="icn-instagram">
+	            		<path d="M5.3,2.9h13.4c1.3,0,2.3,0.9,2.3,2.3v13.4c0,1.4-1,2.3-2.3,2.3H5.3C4,20.9,3,19.9,3,18.6V5.2 C3,3.8,4,2.9,5.3,2.9L5.3,2.9z M16.1,4.9c-0.4,0-0.8,0.4-0.8,0.8v1.9c0,0.4,0.4,0.8,0.8,0.8h2c0.4,0,0.8-0.4,0.8-0.8V5.7 c0-0.4-0.4-0.8-0.8-0.8L16.1,4.9L16.1,4.9z M18.9,10.5h-1.6c0.1,0.5,0.2,1,0.2,1.5c0,3-2.5,5.4-5.6,5.4c-3.1,0-5.6-2.4-5.6-5.4 c0-0.5,0.1-1.1,0.2-1.5H5v7.6c0,0.4,0.3,0.7,0.7,0.7h12.5c0.4,0,0.7-0.3,0.7-0.7L18.9,10.5L18.9,10.5z M12,8.3 c-2,0-3.6,1.6-3.6,3.5s1.6,3.5,3.6,3.5c2,0,3.6-1.6,3.6-3.5S14,8.3,12,8.3z"></path>
+	            	</svg>
+	            	<sub class="ws-footer-socials-sub">@curatedbyhevnly</sub>
+	            </a>
+	            <a target="_blank" href="https://www.facebook.com/hevnlyholygrail" class="ws-footer-socials-link">
+	            	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" class="icn-facebook">
+	            		<path d="M9.9,20.9v-8.4H7.7v-3h2.2c0,0,0-1.2,0-2.6c0-2,1.3-3.9,4.3-3.9c1.2,0,2.1,0.1,2.1,0.1L16.2,6 c0,0-0.9,0-1.9,0c-1.1,0-1.3,0.5-1.3,1.3c0,0.7,0-1.4,0,2.2h3.3l-0.1,3h-3.1v8.4H9.9z"></path>
+	            	</svg>
+	            	<sub class="ws-footer-socials-sub">/hevnlyholygrail</sub>
+	            </a>
+	        </div>
 
-		    <!--take this section out if user logged in-->
-		    <section class="join">
-		    	<h1 class="margined">Discover contemporary brands and accessories on hevnly | the invitation only shopping platform and magazine. </h1>
-		        <span class="join-btn cta-registration" id="join-modal-trigger">request invite</span>
-		    </section>
-			
-			<!-- show when box campaign is live -->
-		    <section class="join" style="display: none;">
-		        <h1 class="margined">register now and win one of 6 limited hevnly boxes worth £xxxx</h1>
-		        <a href="#" class="join-btn">count me in</a>
-		    </section>
-		    <!--// show when box campaign is live -->
+	        <section class="ws-footer-join">
+	          <!-- FUNNEL MODULE -->
+	          	<div class="ws-funnel">
+		            <div class="ws-funnel-views">
+		                <div class="ws-funnel-appview">
+		              		<!-- tagline module -->
+			                <div class="ws-tagline-container -finish">
+								<div class="ws-tagline-message">
+								    <p class="ws-tagline-message-txt">for those who want more</p>
+								</div>
+								<div class="ws-tagline-flipper -flip-900">
+								    <div class="ws-tagline-flipper-front">art</div>
+								    <div class="ws-tagline-flipper-back">style</div>
+								</div>
+			                </div>
+		                	<!--// tagline module -->
 
-		    <ul class="boring-bits">
-		        <li class="brand"><a href="mailto:collective@hevnly.com?Subject=Message From Website" class="soft-link">are you a brand? <span>get in touch<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="icn-arrow-right-small" x="0px" y="0px" viewBox="231.412 259.501 269.021 553.215"><path d="M234.847 265.517c-4.579 9.158-4.579 18 0 32.054l215.216 238.112L234.847 773 c-4.579 9.158-4.579 22 0 32.053s18.316 9 27 0l228.953-251.85c4.579 0 4.579-4.578 4.579-4.578 c4.579-4.579 4.579-9.158 4.579-13.738c0-4.578-4.579-13.736-4.579-13.736c-4.579-4.58-4.579-4.58-4.579-4.58L262.322 274 C253.163 256 239 256 234 265.517z"/></svg></span></a></li>
-		        <li class="email"><a href="mailto:hello@hevnly.com?Subject=Message From Website">hello@hevnly.com</a></li>
-		        <li class="phone"><a href="tel:+44 (0) 207193 8284">+44 (0) 207 193 8284</a></li>
-		    </ul>
+		                	<a href="#appstore" class="btn-appstore">
+								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 20 44" class="icn-apple">
+									<path d="M18.1,24.227c-0.106,0.307-0.217,0.6-0.335,0.881c-0.288,0.664-0.628,1.275-1.022,1.836   c-0.536,0.766-0.976,1.296-1.315,1.59c-0.525,0.483-1.088,0.731-1.691,0.744c-0.433,0-0.954-0.123-1.562-0.372   c-0.609-0.249-1.169-0.372-1.681-0.372c-0.537,0-1.113,0.123-1.729,0.372c-0.617,0.249-1.114,0.38-1.494,0.392   c-0.578,0.025-1.154-0.229-1.729-0.764c-0.367-0.32-0.826-0.869-1.376-1.646c-0.59-0.83-1.075-1.793-1.455-2.891   C2.304,22.812,2.1,21.664,2.1,20.553c0-1.273,0.275-2.371,0.826-3.291c0.433-0.739,1.009-1.322,1.73-1.75   c0.721-0.428,1.5-0.646,2.339-0.66c0.459,0,1.061,0.142,1.809,0.421c0.746,0.28,1.225,0.422,1.435,0.422   c0.157,0,0.689-0.166,1.591-0.497c0.853-0.307,1.573-0.434,2.163-0.384c1.598,0.129,2.798,0.759,3.597,1.894   c-1.429,0.866-2.136,2.079-2.122,3.635c0.013,1.212,0.452,2.221,1.316,3.022C17.176,23.736,17.614,24.023,18.1,24.227z    M14.08,10.305c0.013,0.127,0.019,0.254,0.019,0.38c0,0.95-0.347,1.837-1.038,2.658c-0.835,0.976-1.845,1.54-2.94,1.451   c-0.014-0.114-0.022-0.234-0.022-0.36c0-0.912,0.397-1.888,1.102-2.686c0.352-0.404,0.8-0.74,1.342-1.008   C13.085,10.476,13.598,10.33,14.08,10.305z"></path>
+								</svg>
+		                  		<span class="-capitalise btn-appstore-microtext">download on the</span>
+		                    	<span class="btn-appstore-maintext">app store</span>
+		                	</a>
+	                	</div>
 
-		    <ul class="legal">
-		        <li class="terms"><a href="https://hevnly.com/termsofuse">terms of use</a></li>
-		        <li class="privacy"><a href="https://hevnly.com/privacy">privacy policy</a></li>
-		    </ul>
-		</footer>
+		                <div class="ws-funnel-signupview">
+		                    <h3 class="ws-funnel-signupview-title">sign up</h3>
+	                		<div class="ws-globsignup">
+								<div class="ws-globsignup-errorbox">
+									<p class="ws-globsignup-errorbox-txt">somethings wrong, try again later</p>
+									<button class="ws-globsignup-errorbox-btn">try again</button>
+								</div>
+	                      
+	                  			<div class="ws-globsignup-successbox">
+	                    			<span class="ws-globsignup-successbox-tick">
+										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 -3 24 24" class="icn-tick">
+										    <path d="M19.4,4.1c-0.2-0.2-0.5-0.2-0.7,0l-9.1,8.8L5.3,8.7c-0.2-0.2-0.5-0.2-0.7,0c-0.2,0.2-0.2,0.5,0,0.7l4.6,4.5
+										                            l0,0l0,0c0.2,0.2,0.5,0.2,0.7,0l9.4-9.1C19.5,4.5,19.5,4.3,19.4,4.1z"></path>
+										</svg>
+	                    			</span>
+	                    			<p class="ws-globsignup-successbox-txt">thanks for signing up</p>
+	                  			</div>
+	                    
+	                  			<div class="ws-globsignup-txtbox">
+	                    			<button class="ws-globsignup-tip">
+	                      				<svg version="1.1" class="icn-mail" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24" enable-background="new 0 0 24 24">
+					                        <path fill-rule="evenodd" d="M19.9,5.6c-0.1-0.1-0.2-0.1-0.4-0.1H4.5
+					                                c-0.1,0-0.3,0-0.4,0.1C4,5.7,4,5.9,4,6c0,0,0,0,0,0v12c0,0.3,0.2,0.5,0.5,0.5h15c0.3,0,0.5-0.2,0.5-0.5V6c0,0,0,0,0,0
+					                                C20,5.9,20,5.7,19.9,5.6z M18.1,6.5L12,11.4L5.9,6.5H18.1z M18.5,17.5h-13C5.2,17.5,5,17.3,5,17V7l6.6,5.3c0,0,0,0,0,0
+					                                c0.1,0.1,0.2,0.1,0.4,0.1c0.1,0,0.3,0,0.4-0.1c0,0,0,0,0,0L19,7v10C19,17.3,18.8,17.5,18.5,17.5z"></path>
+	                      				</svg>
+	                      				<span class="spinner"></span>
+	                    			</button>
+	                    			<input type="text" placeholder="your email" class="ws-globsignup-input">
+	                    			<button class="ws-globsignup-button">join</button>
+	                  			</div>
 
-		<!--MODAL OVERLAY-->
-		<div class="modal-overlay">
-		    <div class="modal-close" id="modal-close"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 -3 24 24" class="icn-cross"><path d="M12.6,9l5.7-5.7c0.2-0.2,0.2-0.4,0-0.6c-0.2-0.2-0.4-0.2-0.6,0L12,8.3L6.3,2.6C6.2,2.5,5.8,2.5,5.6,2.6 c-0.1,0.2-0.1,0.6,0,0.6l5.7,5.7l-5.7,5.7c-0.1,0.2-0.2,0.4,0,0.6c0.2,0.2,0.6,0.2,0.6,0.2l5.7-5.7l5.7,5.7c0.2,0.2,0.4,0.2,0.6,0 c0.2-0.2,0.2-0.4,0-0.6L12.6,9z"></path></svg></div>
-		</div>
+	                  			<p class="ws-globsignup-spam">no spam. no commitment. just you and hevnly</p>
+                			</div>
+                		</div>
+            		</div>
 
-		<!-- app off canvas nav -->
-		<div class="off-canvas-overlay">
-		    <nav class="off-canvas left overlay-dependant" id="navmenu">
-		        <button class="off-canvas-close">
-		            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 -3 24 24" class="icn-cross">
-		                <path d="M12.6,9l5.7-5.7c0.2-0.2,0.2-0.4,0-0.6c-0.2-0.2-0.4-0.2-0.6,0L12,8.3L6.3,2.6C6.2,2.5,5.8,2.5,5.6,2.6
-		            c-0.1,0.2-0.1,0.6,0,0.6l5.7,5.7l-5.7,5.7c-0.1,0.2-0.2,0.4,0,0.6c0.2,0.2,0.6,0.2,0.6,0.2l5.7-5.7l5.7,5.7c0.2,0.2,0.4,0.2,0.6,0
-		            c0.2-0.2,0.2-0.4,0-0.6L12.6,9z"></path>
-		            </svg>
-		        </button>
-
-		        <div class="scroll-area">
-		            <div role="navigation">
-		                <a href="https://hevnly.com/discover">
-		                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" class="icn-glasses" viewBox="0 1 24 24">
-		                        <circle cx="17.3" cy="14.4" r="3.8"></circle>
-		                        <circle cx="6.7" cy="14.4" r="3.8"></circle>
-		                        <path d="M14.5,11.7c-0.6-0.5-1.4-0.8-2.3-0.8c-1,0-2,0.4-2.6,1.1"></path>
-		                        <path class="arms" d="M3.1,13.5L3.5,7c0,0,0.2-1.2,2.2-1.2"></path>
-		                        <path class="arms" d="M20.9,13.5L20.5,7c0,0-0.2-1.2-2.2-1.2"></path>
-		                    </svg>
-		                    <p>discover</p>
-		                </a>
-
-		                <a href="https://hevnly.com/profile/me">
-		                    <img  id="profile-picture" src="https://d1aq1bw1xvj3lr.cloudfront.net/v0.3.0/images/defaults/profilePic.jpg" class="thumbnail" alt="Users profile image.">
-		                    <p>profile</p>
-		                </a>
-
-		                <a href="https://hevnly.com/settings">
-		                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" shape-rendering="geometricPosition" viewBox="0 -2 24 24" class="icn-cog">
-		                        <ellipse fill="none" cx="12.2" cy="9" rx="3.2" ry="3.1"></ellipse>
-		                            <path d="M10.7,2L13,3.2l2.5-0.4l1,2.4l2.3,1.2L18,8.8l0.6,2.3l-1.9,1.4l-0.8,2.4l-2.5-0.4L11,15.9l-1.7-2l-2.5-0.4
-		                v-2.5L5,9.1l1.6-2L6.6,4.5L9.1,4L10.7,2 M10.7,1c-0.3,0-0.5,0.1-0.7,0.4L8.7,3.1L6.4,3.5C5.8,3.6,5.6,4,5.6,4.5l0.1,2.2L4.2,8.5
-		                c-0.3,0.4-0.3,0.8,0,1.3l1.5,1.7v2.2c0,0.4,0.4,0.8,0.8,1L8.8,15l1.5,1.7c0.2,0.2,0.5,0.3,0.7,0.3c0.2,0,0.4,0,0.5-0.1l1.9-1.2
-		                l2.3,0.4c0.1,0,0.1,0,0.1,0c0.4,0,0.7-0.3,0.8-0.6l0.7-2.1l1.9-1.2c0.4-0.3,0.5-0.7,0.4-1.2l-0.5-2.3l0.7-2.1c0.2-0.4,0-1-0.5-1.2
-		                l-2-1.1l-0.8-2.1c-0.2-0.4-0.5-0.5-0.8-0.5c-0.1,0-0.1,0-0.2,0l-2.2,0.4l-2-1.1C11.1,1,10.9,1,10.7,1L10.7,1z"></path>
-		                    </svg>
-		                    <p>settings</p>
-		                </a>
-		                <a href="https://hevnly.com/logout">
-		                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 -3 24 24" class="icn-arrow-left">
-		                        <path d="M9,9l7.3-6.9c0.3-0.3,0.3-0.6,0-0.9c-0.3-0.3-0.6-0.3-0.9,0L7.9,8.4c-0.1,0-0.2,0.1-0.2,0.2
-		            C7.6,8.6,7.5,8.8,7.5,9s0.1,0.4,0.2,0.4c0.1,0.1,0.1,0.1,0.2,0.2l7.5,7.2c0.3,0.3,0.6,0.3,0.9,0c0.3-0.3,0.3-0.6,0-0.9L9,9z"></path>
-		                    </svg>
-		                    <p>sign out</p>
-		                </a>
+		            <div class="ws-funnel-controls">
+						<button class="ws-funnel-controls-toggle">
+							<span class="ws-funnel-controls-or">or </span>
+							<span class="ws-funnel-controls-signup">sign up</span>
+							<span class="ws-funnel-controls-back">back</span>
+						</button>
 		            </div>
-		        </div>
+            	</div>
+	            <!--// FUNNEL MODULE -->
+	        </section>
 
-		        <div class="legal-app-navigation">
-		            <a href="https://hevnly.com/legals" class="legal-app-links">legals</a>
-		            <a href="https://hevnly.com/returns" class="legal-app-links">returns</a>
-		            <a href="mailto:hello@hevnly.com" class="legal-app-links">contact</a>
-		        </div>
-		    </nav>
-		</div>
+	        <ul class="ws-footer-contactus">
+				<li class="ws-footer-contactus-brand"><a href="mailto:collective@hevnly.com?Subject=Message From Website" class="soft-link">are you a brand? <span>get in touch<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="icn-arrow-right-small" x="0px" y="0px" viewBox="231.412 259.501 269.021 553.215"><path d="M234.847 265.517c-4.579 9.158-4.579 18 0 32.054l215.216 238.112L234.847 773 c-4.579 9.158-4.579 22 0 32.053s18.316 9 27 0l228.953-251.85c4.579 0 4.579-4.578 4.579-4.578 c4.579-4.579 4.579-9.158 4.579-13.738c0-4.578-4.579-13.736-4.579-13.736c-4.579-4.58-4.579-4.58-4.579-4.58L262.322 274 C253.163 256 239 256 234 265.517z"></path></svg></span></a></li>
+				<li class="ws-footer-contactus-email"><a href="mailto:hello@hevnly.com?Subject=Message From Website">hello@hevnly.com</a></li>
+				<li class="ws-footer-contactus-phone"><a href="tel:+44 (0) 207193 8284">+44 (0) 207 193 8284</a></li>
+	        </ul>
+
+	        <ul class="ws-footer-legal">
+	            <li class="ws-footer-legal-terms"><a target="_blank" href="https://hevnly.com/termsofuse">terms of use</a></li>
+	            <li class="ws-footer-legal-privacy"><a target="_blank" href="https://hevnly.com/privacy">privacy policy</a></li>
+	        </ul>
+	    </footer>
+      	<!--// FOOTER -->
 
 		<script>
 			$(document).ready(function() {
