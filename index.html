@@ -358,51 +358,21 @@
 		        </div>
 		    </nav>
 		</div>
-		<!--// app off canvas nav -->
 
 		<script>
-		    // something quick to get the off canvas nav working
+			$(document).ready(function() {
+				// animate in the first view
+				$('.intro-panel-container').removeClass('hide');
 
-		    // grab elements
-		    var navicon = $('#navicon'),
-		        overlay = $('.off-canvas-overlay'),
-		        offCanvasNav = $('.off-canvas.left'),
-		        offCanvasNavCloseBtn = $('.off-canvas-close');
+				function showArticleText(event) {
 
-		    // when navicon is clicked, show off canvas nav & modal
-		    navicon.click(function() {
-		        overlay.addClass('show');
-		        offCanvasNav.addClass('show');
-		    });
-
-		    // when the close button or overlay is clicked, close the off canvas nav
-		    offCanvasNavCloseBtn.add(overlay).click(function(event) {
-
-		        // make sure events aren't bubbling from other els
-		        if ($(event.target).is(overlay) || $(event.target).is(offCanvasNavCloseBtn)) {
-		            overlay.removeClass('show');
-		            offCanvasNav.removeClass('show');
-		        }
-		    });
-		</script>
-
-		<script>
-		$(document).ready(function() {
-			// animate in the first view
-			$('.intro-panel-container').removeClass('hide');
-
-			function showArticleText(event) {
-
-				$('#feature .floating:in-viewport').each(function() {
-						$(this).removeClass('hide');
-				});
-			}
-
-			showArticleText();
-
-			$(window).on('scroll', showArticleText);
-
-		});
+					$('#feature .floating:in-viewport').each(function() {
+							$(this).removeClass('hide');
+					});
+				}
+				showArticleText();
+				$(window).on('scroll', showArticleText);
+			});
 		</script>
 
 		<script>
@@ -416,65 +386,17 @@
 		</script>
 
 		<script>
-		$(document).ready(function() {
-      $(".countdown").TimeCircles({
-			    "animation": "smooth",
-			    "bg_width": 1,
-			    "fg_width": 0.03,
-			    "circle_bg_color": "rgba(255,255,255,0.2)",
-			    "time": {
-			        "Days": {
-			            "text": "Days",
-			            "color": "#FFF",
-			            "show": true
-			        },
-			        "Hours": {
-			            "text": "Hours",
-			            "color": "#FFF",
-			            "show": true
-			        },
-			        "Minutes": {
-			            "text": "Minutes",
-			            "color": "#FFF",
-			            "show": false
-			        },
-			        "Seconds": {
-			            "text": "Seconds",
-			            "color": "#FFF",
-			            "show": false
-			        }
-			    }
+			$(document).ready(function() {
+
+				$(".search").keypress(function (event) {
+						var apiUrlParts;		//API's URL parts resulting from split at the '//'
+
+	    			if (event.which == 13) {
+	    					apiUrlParts = $(document).data("appUrl").split('//');
+	    					location.href = apiUrlParts[0] + '//app.' + apiUrlParts[1] + '/search/' + this.value;
+	    			}
+	    		});
 			});
-
-			$(".search").keypress(function (event) {
-					var apiUrlParts;		//API's URL parts resulting from split at the '//'
-
-    			if (event.which == 13) {
-    					apiUrlParts = $(document).data("appUrl").split('//');
-    					location.href = apiUrlParts[0] + '//app.' + apiUrlParts[1] + '/search/' + this.value;
-    			}
-    	});
-		});
-        </script>
-
-        <script>
-        $(document).ready(function() {
-		    $('.slider').slick({
-		        nextArrow:'<div class="slider-next"><a><span>next</span></a></div>',
-		        prevArrow:'<div class="slider-prev"><a><span>previous</span></a></div>',
-		        mobileFirst: true,
-		        touchMove: false,
-		        responsive: [
-		        {
-		          breakpoint: 600,
-		          settings: {
-		            centerMode: true,
-		            centerPadding: '25%'
-		          }
-		        }
-		      ]
-		    });
-		});
         </script>
 	</body>
 </html>
