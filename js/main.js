@@ -12,6 +12,18 @@ $(document).ready(function() {
         $('.intro-panel').css({'height': windowHeight});
     }
 
+    // animate in the first view
+    $('.intro-panel-container').removeClass('hide');
+
+    function showArticleText(event) {
+
+        $('#feature .floating:in-viewport').each(function() {
+                $(this).removeClass('hide');
+        });
+    }
+    showArticleText();
+    $(window).on('scroll', showArticleText);
+
     // REQUEST INVITE BUTTON
     var inviteContainer     = $('.cta-invite'),
         inviteLabel         = inviteContainer.find('.cta-invite-label'),
