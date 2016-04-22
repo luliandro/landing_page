@@ -361,10 +361,45 @@ jQuery(document).ready(function() {
         window.location = $(document).data("blogUrl");
     });
 
+    var notificationText = window.getParameterByName("notification");
+
     // remove notification when clicked
     var notification = $('.ws-notification');
 
-    notification.on('click', function() {
+    notification.children('button').on('click', function() {
         notification.removeClass('-show');
     });
+
+    if (notificationText) {
+        notification.children(".ws-notification-text").html(notificationText);
+        notification.addClass("-show");
+        if (iOS()) {
+            document.location.href = 'hevnly://';
+        }
+    }
 });
+
+function getParameterByName(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function iOS() {
+
+  var iDevices = [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ];
+
+  if (!!navigator.platform) {
+    while (iDevices.length) {
+      if (navigator.platform === iDevices.pop()){ return true; }
+    }
+  }
+
+  return false;
+}
