@@ -79,10 +79,7 @@ $(document).ready(function() {
     function subscribe(data) {
        sendInviteForm();
        $.ajaxSetup({
-           crossDomain: true,
-           xhrFields: {
-               withCredentials: true
-           }
+           crossDomain: true
        });
        var apiUrl = $(document).data("appUrl");
 
